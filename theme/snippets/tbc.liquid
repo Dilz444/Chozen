@@ -1,0 +1,9 @@
+{%- comment -%}
+  Prints text with unconfirmed facts marked. "[to confirm]" becomes a visible dashed tag while
+  settings.show_placeholder_marks is on. Usage: {% render 'tbc', text: some_text %}
+{%- endcomment -%}
+{%- if settings.show_placeholder_marks -%}
+  {{- text | replace: '[to confirm]', '<span class="tbc">to confirm</span>' | replace: '[her words to come]', '<span class="tbc">her words to come</span>' -}}
+{%- else -%}
+  {{- text | remove: ' [to confirm]' | remove: '[to confirm]' -}}
+{%- endif -%}

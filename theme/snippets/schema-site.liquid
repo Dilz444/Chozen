@@ -1,0 +1,72 @@
+{%- comment -%}
+  Florist (LocalBusiness), Organization and WebSite on the home page; the Florist block also on contact, delivery
+  and area pages so they can reference it. Every value here is also visible on the page (footer, contact block).
+  Placeholders ("[ADDRESS]") are left out of the JSON so Google never sees them.
+{%- endcomment -%}
+{%- liquid
+  assign show = false
+  if request.page_type == 'index'
+    assign show = true
+  elsif request.page_type == 'page'
+    if template.suffix == 'contact' or template.suffix == 'delivery' or template.suffix == 'area'
+      assign show = true
+    endif
+  endif
+  assign base = request.origin | append: '/'
+  assign zones = settings.delivery_zones | upcase | remove: ' ' | split: ','
+-%}
+{%- if show -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Florist",
+      "@id": {{ base | append: '#florist' | json }},
+      "name": {{ shop.name | json }},
+      "url": {{ base | json }},
+      {%- if settings.logo != blank %}"logo": {{ settings.logo | image_url: width: 512 | prepend: 'https:' | json }},{% endif %}
+      "description": "Florist and gift boutique in Enfield, London. Fresh flowers and balloon gift sets hand-delivered the same day across North London; faux flowers, crystals and gemstone jewellery sent UK-wide.",
+      {%- if settings.phone != blank %}"telephone": {{ settings.phone | remove: ' ' | replace_first: '0', '+44' | json }},{% endif %}
+      {%- if settings.email != blank %}"email": {{ settings.email | json }},{% endif %}
+      "address": {
+        "@type": "PostalAddress",
+        {%- unless settings.street_address contains '[' %}"streetAddress": {{ settings.street_address | json }},{% endunless %}
+        {%- unless settings.postcode contains '[' %}"postalCode": {{ settings.postcode | json }},{% endunless %}
+        "addressLocality": "Enfield",
+        "addressRegion": "London",
+        "addressCountry": "GB"
+      },
+      {%- if settings.geo != blank -%}
+        {%- assign g = settings.geo | split: ',' -%}
+        "geo": { "@type": "GeoCoordinates", "latitude": {{ g[0] | strip }}, "longitude": {{ g[1] | strip }} },
+      {%- endif -%}
+      {%- if settings.hours_schema != blank %}"openingHours": {{ settings.hours_schema | json }},{% endif %}
+      {%- if settings.price_range != blank %}"priceRange": {{ settings.price_range | json }},{% endif %}
+      "areaServed": [{% for z in zones %}{ "@type": "PostalCodeRangeSpecification", "postalCodeBegin": {{ z | json }} }{% unless forloop.last %},{% endunless %}{% endfor %}],
+      "parentOrganization": { "@id": {{ base | append: '#org' | json }} },
+      "sameAs": [{% assign first = true %}{% for s in 'instagram,tiktok,facebook,pinterest,google_profile' | split: ',' %}{% if settings[s] != blank %}{% unless first %},{% endunless %}{{ settings[s] | json }}{% assign first = false %}{% endif %}{% endfor %}]
+    }
+    {%- if request.page_type == 'index' -%}
+    ,{
+      "@type": "Organization",
+      "@id": {{ base | append: '#org' | json }},
+      "name": {{ shop.name | json }},
+      "url": {{ base | json }},
+      {%- if settings.logo != blank %}"logo": {{ settings.logo | image_url: width: 512 | prepend: 'https:' | json }},{% endif %}
+      "founder": { "@type": "Person", "name": "Beyzan", "url": {{ request.origin | append: '/pages/about' | json }} },
+      "contactPoint": { "@type": "ContactPoint", "contactType": "customer service", "areaServed": "GB", "availableLanguage": "en-GB"{% if settings.phone != blank %}, "telephone": {{ settings.phone | remove: ' ' | replace_first: '0', '+44' | json }}{% endif %}{% if settings.email != blank %}, "email": {{ settings.email | json }}{% endif %} }
+    },
+    {
+      "@type": "WebSite",
+      "@id": {{ base | append: '#website' | json }},
+      "name": {{ shop.name | json }},
+      "alternateName": "ChoZen Boutique Enfield",
+      "url": {{ base | json }},
+      "publisher": { "@id": {{ base | append: '#org' | json }} }
+    }
+    {%- endif -%}
+  ]
+}
+</script>
+{%- endif -%}

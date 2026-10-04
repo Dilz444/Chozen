@@ -1,0 +1,7 @@
+{%- comment -%} Sticky order bar on phones: appears once the page's main buttons scroll away. Hidden on sympathy pages. {%- endcomment -%}
+{%- unless template.suffix == 'sympathy' or template.name == 'cart' or template.name == 'product' -%}
+<div class="mbar" id="mbar" aria-hidden="true">
+  <p class="mbar__t"><svg aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>{% render 'cutoff', style: 'bar' %}</p>
+  <a class="btn btn--primary btn--sm" href="{{ collections['same-day-flowers'].url | default: '/collections/same-day-flowers' }}" tabindex="-1">Shop today's flowers</a>
+</div>
+{%- endunless -%}

@@ -1,0 +1,9 @@
+{%- comment -%} Postcode checker. Same prefix list as the delivery zones (settings.delivery_zones). Works without JS as a link to the delivery page. {%- endcomment -%}
+<form class="pc" action="{{ pages['delivery'].url | default: '/pages/delivery' }}" method="get" data-postcode-check novalidate>
+  <label class="pc__label" for="pc-{{ id | default: 'main' }}">{{ 'delivery.check_label' | t }}</label>
+  <div class="pc__row">
+    <input id="pc-{{ id | default: 'main' }}" name="postcode" autocomplete="postal-code" autocapitalize="characters" spellcheck="false" placeholder="{{ 'delivery.check_placeholder' | t }}">
+    <button class="btn btn--sage" type="submit">{{ 'delivery.check_button' | t }}</button>
+  </div>
+  <p class="pc__out" role="status" aria-live="polite"></p>
+</form>

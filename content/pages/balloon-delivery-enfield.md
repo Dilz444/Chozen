@@ -2,7 +2,7 @@
 url: /pages/balloon-delivery-enfield
 type: page
 template: page.area
-title: Balloon Delivery in Enfield, London, Same Day | ChoZen Boutique
+title: Balloon Delivery in Enfield, London | ChoZen Boutique
 meta: Helium balloon gift sets, on their own or with fresh flowers, hand-delivered inflated the same day in Enfield and North London. Order by 10am.
 h1: Balloon delivery in Enfield, London, today
 lede: >-
@@ -46,8 +46,8 @@ each one with its colours, number of balloons and the price, from £[PRICE].
 
 ## Can you send flowers and balloons together?
 
-Yes. Choose a bouquet, add a balloon set, and one delivery brings both. It's the gift we hear asked for on
-birthdays, new babies and exam results days [her notes to come].
+Yes. Choose a bouquet, add a balloon set, and one delivery brings both. It suits birthdays, new babies and exam
+results days, when a bouquet on its own feels a little quiet.
 
 ## Where do you deliver balloons in Enfield?
 

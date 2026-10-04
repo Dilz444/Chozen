@@ -1,0 +1,89 @@
+{
+  "general": {
+    "skip": "Skip to content",
+    "menu": "Menu",
+    "close": "Close",
+    "search": "Search",
+    "basket": "Basket",
+    "basket_count": {
+      "one": "Basket, {{ count }} item",
+      "other": "Basket, {{ count }} items"
+    },
+    "home": "Home",
+    "see_all": "See all",
+    "read_more": "Read more",
+    "photo_to_come": "Photo to come",
+    "sample": "Sample",
+    "to_confirm": "to confirm"
+  },
+  "delivery": {
+    "order_by": "Order by {{ time }} for delivery today",
+    "same_day_badge": "Same day",
+    "uk_badge": "UK-wide",
+    "check_label": "Do we deliver to you today?",
+    "check_placeholder": "Postcode, e.g. N21 1AA",
+    "check_button": "Check",
+    "local_title": "Hand-delivered in North London",
+    "uk_title": "Posted anywhere in the UK"
+  },
+  "products": {
+    "from": "From {{ price }}",
+    "add": "Add to basket",
+    "sold_out": "Sold out",
+    "unavailable": "Unavailable",
+    "quantity": "Quantity",
+    "card_message": "Card message",
+    "card_message_help": "Write it as you'd sign it. We include it on a card with your gift.",
+    "tax": "Price includes VAT where applicable. Delivery is added at checkout and shown before you pay.",
+    "whats_in_it": "What's in it",
+    "size": "Size",
+    "care": "Care",
+    "delivery": "Delivery",
+    "materials": "Materials",
+    "meaning": "Its meaning"
+  },
+  "collections": {
+    "sort": "Sort",
+    "filter": "Filter",
+    "products_count": {
+      "one": "{{ count }} product",
+      "other": "{{ count }} products"
+    },
+    "empty": "Nothing here yet. New flowers are on the way."
+  },
+  "cart": {
+    "title": "Your basket",
+    "empty": "Your basket is empty.",
+    "subtotal": "Subtotal",
+    "checkout": "Checkout",
+    "remove": "Remove",
+    "note": "Delivery date, delivery fee and your card message are confirmed before you pay.",
+    "local_only": "Fresh flowers and balloons are hand-delivered in North London only. Sending a keepsake to a UK address outside our delivery area? Please order it separately."
+  },
+  "blogs": {
+    "updated": "Updated {{ date }}",
+    "contents": "In this guide"
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search flowers, balloons, crystals…",
+    "none": "Nothing found for “{{ terms }}”. Try a flower, a colour or an occasion."
+  },
+  "contact": {
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone (optional)",
+    "message": "Message",
+    "send": "Send",
+    "sent": "Thank you. We'll get back to you as soon as we can."
+  },
+  "newsletter": {
+    "label": "Email address",
+    "button": "Sign up",
+    "success": "Thank you. You're on the list."
+  },
+  "404": {
+    "title": "This page has wilted",
+    "text": "The page you're after has moved or never existed. Try today's flowers or search below."
+  }
+}

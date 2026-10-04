@@ -2,7 +2,7 @@
 url: /pages/flower-delivery-southgate
 type: page
 template: page.area
-title: Flower Delivery in Southgate & Oakwood, N14 | ChoZen Boutique
+title: Flower Delivery, Southgate & Oakwood N14 | ChoZen Boutique
 meta: Bouquets and balloon gift sets hand-delivered in Southgate and Oakwood, N14, from Southgate Green to Oakwood station. Order by 10am, delivered today.
 h1: Flower delivery in Southgate and Oakwood, N14
 lede: >-

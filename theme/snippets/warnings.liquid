@@ -1,0 +1,23 @@
+{%- comment -%}
+  Safety and honesty notes driven by product data, so they can't be forgotten:
+  lilies (cats), latex (under-8s choking + natural rubber latex), foil (power lines), crystals (disclaimer), jewellery (hallmarks).
+{%- endcomment -%}
+{%- liquid
+  assign m = product.metafields.custom
+  assign line = m.line.value
+-%}
+{%- if m.contains_lilies.value -%}
+  <p class="warn"><strong>Contains lilies.</strong> Lilies are toxic to cats, including the pollen and the vase water. Tell us in the card message box if the recipient has a cat and we'll leave them out.</p>
+{%- endif -%}
+{%- if m.latex.value -%}
+  <p class="warn"><strong>Warning:</strong> children under 8 years can choke or suffocate on uninflated or broken balloons. Adult supervision is required. Keep uninflated balloons away from children. Discard broken balloons at once. Made of natural rubber latex.</p>
+{%- endif -%}
+{%- if m.foil.value -%}
+  <p class="warn"><strong>Foil balloons:</strong> keep away from overhead power lines, always keep the weight attached, and never release them outdoors.</p>
+{%- endif -%}
+{%- if line == 'crystal' -%}
+  <p class="warn">Crystals are sold as natural, decorative and gift items. Their traditional meanings are folklore, not proven effects, and they're not a substitute for medical advice.</p>
+{%- endif -%}
+{%- if line == 'jewellery' -%}
+  <p class="warn">Metal: {{ m.materials.value | default: '[to confirm]' }}. Stone treatment: {{ m.treatment.value | default: 'none known' }}. <a href="/pages/hallmarking">About hallmarks</a>.</p>
+{%- endif -%}

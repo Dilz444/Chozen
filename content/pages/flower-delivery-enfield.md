@@ -2,7 +2,7 @@
 url: /pages/flower-delivery-enfield
 type: page
 template: page.area
-title: Same-Day Flower Delivery in Enfield, London | ChoZen Boutique
+title: Florist in Enfield, London, EN1 & EN2 | ChoZen Boutique
 meta: Fresh flowers and balloon sets hand-delivered today across Enfield Town, Bush Hill Park, Gordon Hill and Chase Side, EN1 and EN2. Order by 10am.
 h1: Same-day flower delivery in Enfield, London
 lede: >-

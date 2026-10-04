@@ -181,7 +181,7 @@ Instagram @chozen.boutique · TikTok @chozenboutique · Facebook [link to confir
 
 © 2026 ChoZen Boutique · [Legal name / company number] [to confirm] · Terms · Privacy · Cookies
 
-Menus: see `content/navigation.md`.
+<!-- Menus: see content/navigation.md -->
 
 ## Sticky bar (mobile)
 

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#FBF8F4">
+  <link rel="canonical" href="{{ canonical_url }}">
+  {%- if settings.favicon != blank -%}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 64, height: 64 }}">
+  {%- endif -%}
+  {%- liquid
+    assign title = page_title
+    if current_tags
+      assign title = title | append: ' – ' | append: current_tags.first
+    endif
+    if current_page != 1
+      assign title = title | append: ' – Page ' | append: current_page
+    endif
+    unless title contains 'ChoZen'
+      assign title = title | append: ' | ' | append: shop.name
+    endunless
+  -%}
+  <title>{{ title }}</title>
+  {%- if page_description != blank -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+  {%- render 'meta-tags' -%}
+  <link rel="preload" href="{{ 'cormorant-garamond-latin-500-normal.woff2' | asset_url }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ 'jost-latin-400-normal.woff2' | asset_url }}" as="font" type="font/woff2" crossorigin>
+  {%- render 'fonts' -%}
+  {{ 'tokens.css' | asset_url | stylesheet_tag }}
+  {{ 'base.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'theme.js' | asset_url }}" defer></script>
+  {{ content_for_header }}
+  {%- render 'schema-site' -%}
+</head>
+<body class="tpl-{{ template.name }}{% if template.suffix %} tpl-{{ template.name }}-{{ template.suffix }}{% endif %}">
+  {%- render 'icon-sprite' -%}
+  <a class="skip" href="#main">{{ 'general.skip' | t }}</a>
+  {% sections 'header-group' %}
+  <main id="main" tabindex="-1">
+    {{ content_for_layout }}
+  </main>
+  {% sections 'footer-group' %}
+  {%- render 'mobile-bar' -%}
+  <script id="chozen-delivery" type="application/json">
+    {
+      "cutoffHour": {{ settings.cutoff_hour | default: 10 }},
+      "days": {{ settings.delivery_days | default: '1,2,3,4,5,6' | split: ',' | json }},
+      "zones": {{ settings.delivery_zones | default: '' | upcase | remove: ' ' | split: ',' | json }},
+      "paused": {{ settings.same_day_paused | json }},
+      "pausedMessage": {{ settings.paused_message | json }}
+    }
+  </script>
+</body>
+</html>

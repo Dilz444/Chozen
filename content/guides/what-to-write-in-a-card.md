@@ -59,10 +59,10 @@ guide, and bouquets in [anniversary flowers](/collections/anniversary-flowers).
 
 ## What should I write for a new baby?
 
-- Welcome to the world, little one. You've picked a lovely family.
+- Hello, little one. You picked a lovely family to land in.
 - Congratulations on your beautiful boy. We can't wait to meet him.
 - She's here. So much love to all three of you.
-- Congratulations. Sleep when you can, and call us when you need us.
+- Congratulations. Rest when you can, and call us when you need us.
 - Ten tiny fingers, ten tiny toes and a whole lot of love waiting for them.
 - Welcome, baby Ava. Your aunties are ready to spoil you.
 

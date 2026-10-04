@@ -1,0 +1,20 @@
+{%- comment -%}
+  The cut-off line. Server-rendered with the plain rule so it's true without JavaScript; theme.js swaps in the
+  live state ("Order in the next 2h 14m", "Order now for delivery tomorrow"). Never shows a countdown after the cut-off.
+  style: 'strip' | 'bar' | 'inline'
+{%- endcomment -%}
+{%- liquid
+  assign h = settings.cutoff_hour | default: 10
+  if h < 12
+    assign time = h | append: 'am'
+  elsif h == 12
+    assign time = 'noon'
+  else
+    assign time = h | minus: 12 | append: 'pm'
+  endif
+-%}
+{%- if settings.same_day_paused -%}
+  <span data-cutoff="{{ style | default: 'inline' }}" data-paused>{{ settings.paused_message }}</span>
+{%- else -%}
+  <span data-cutoff="{{ style | default: 'inline' }}" data-time="{{ time }}"><strong>Order by {{ time }}</strong> for delivery today</span>
+{%- endif -%}

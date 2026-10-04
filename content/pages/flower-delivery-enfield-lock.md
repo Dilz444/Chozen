@@ -14,8 +14,8 @@ images:
   - file: enfield-lock-delivery-[to come].jpg
     alt: A blue and white balloon set with a bouquet of white roses at a door in Enfield Island Village
     status: placeholder
-  - file: enfield-lock-navigation-[to come].jpg
-    alt: Narrowboats moored on the River Lee Navigation at Enfield Lock
+  - file: enfield-lock-river-[to come].jpg
+    alt: Narrowboats moored on the River Lee at Enfield Lock
     status: placeholder
 faq:
   - q: Do you deliver to Enfield Island Village?
@@ -40,7 +40,7 @@ Five, all along the eastern side of Enfield [to confirm]:
 - **Brimsdown**, including the industrial estates by the river.
 - **Enfield Highway**, either side of the Hertford Road.
 - **Enfield Wash**, up towards Turkey Street.
-- **Enfield Lock**, with Enfield Island Village on the old Royal Small Arms Factory site by the Lee Navigation.
+- **Enfield Lock**, with Enfield Island Village on the old Royal Small Arms Factory site by the River Lee.
 
 ## Is EN3 covered on the same day as Enfield Town?
 

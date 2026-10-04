@@ -25,7 +25,7 @@ links: [/collections/same-day-flowers, /collections/balloon-gift-sets, /collecti
 
 ## Where did it start?
 
-It started with jasmine flower crowns in Cyprus. [her words to come: who made them with her, how old she was,
+Jasmine came first. [her words to come: who made them with her, how old she was,
 where in Cyprus, what she remembers about them]
 
 ## How did that become a shop in Enfield?

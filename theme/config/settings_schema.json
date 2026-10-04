@@ -1,0 +1,63 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "ChoZen",
+    "theme_version": "0.1.0",
+    "theme_author": "Built for ChoZen Boutique",
+    "theme_documentation_url": "https://github.com/Dilz444/Chozen",
+    "theme_support_url": "https://github.com/Dilz444/Chozen"
+  },
+  {
+    "name": "Same-day delivery",
+    "settings": [
+      { "type": "paragraph", "content": "These settings drive the countdown, the postcode checker and the delivery notes. Keep them the same as the delivery app and the local delivery zones in Settings → Shipping and delivery." },
+      { "type": "checkbox", "id": "same_day_paused", "label": "Pause same-day delivery", "info": "Hides the countdown everywhere and shows your message instead. Also block the dates in the delivery app.", "default": false },
+      { "type": "text", "id": "paused_message", "label": "Message while paused", "default": "Same-day delivery is paused for a few days. You can still order for a later date." },
+      { "type": "range", "id": "cutoff_hour", "label": "Same-day cut-off (hour, UK time)", "min": 6, "max": 16, "step": 1, "unit": "h", "default": 10 },
+      { "type": "text", "id": "delivery_days", "label": "Delivery days", "info": "Numbers, comma-separated: 1 = Monday … 6 = Saturday, 0 = Sunday.", "default": "1,2,3,4,5,6" },
+      { "type": "textarea", "id": "delivery_zones", "label": "Same-day postcodes", "info": "The start of each postcode, comma-separated. Must match your local delivery zones.", "default": "EN1,EN2,EN3,N9,N13,N14,N18,N21" },
+      { "type": "text", "id": "local_fee_text", "label": "Local delivery fee (shown on products)", "default": "£[FEE] [to confirm]" },
+      { "type": "text", "id": "uk_shipping_text", "label": "UK shipping (shown on keepsakes)", "default": "Posted UK-wide, £[FEE], [x] working days [to confirm]" }
+    ]
+  },
+  {
+    "name": "Logo and icon",
+    "settings": [
+      { "type": "image_picker", "id": "logo", "label": "Logo", "info": "Leave empty to use the ChoZen wordmark." },
+      { "type": "range", "id": "logo_width", "label": "Logo width on desktop", "min": 80, "max": 260, "step": 10, "unit": "px", "default": 160 },
+      { "type": "image_picker", "id": "favicon", "label": "Browser tab icon", "info": "Square, at least 64 × 64px." }
+    ]
+  },
+  {
+    "name": "Business details",
+    "settings": [
+      { "type": "paragraph", "content": "Shown in the footer, the contact page and Google's business information. Must match your Google Business Profile exactly." },
+      { "type": "text", "id": "legal_line", "label": "Legal line", "default": "ChoZen Boutique is the trading name of [LEGAL NAME] [to confirm]" },
+      { "type": "text", "id": "street_address", "label": "Street address", "default": "[ADDRESS]" },
+      { "type": "text", "id": "postcode", "label": "Postcode", "default": "[EN POSTCODE]" },
+      { "type": "text", "id": "phone", "label": "Phone", "default": "07931 662545" },
+      { "type": "text", "id": "email", "label": "Email", "default": "hello@chozenboutique.co.uk" },
+      { "type": "text", "id": "hours", "label": "Opening hours (for people)", "default": "[HOURS]" },
+      { "type": "text", "id": "hours_schema", "label": "Opening hours (for Google)", "info": "Format: Mo-Sa 09:00-17:00", "default": "" },
+      { "type": "text", "id": "geo", "label": "Map position", "info": "Latitude,longitude. Optional.", "default": "" },
+      { "type": "text", "id": "price_range", "label": "Price range", "default": "" }
+    ]
+  },
+  {
+    "name": "Social",
+    "settings": [
+      { "type": "url", "id": "instagram", "label": "Instagram", "default": "https://www.instagram.com/chozen.boutique/" },
+      { "type": "url", "id": "tiktok", "label": "TikTok", "default": "https://www.tiktok.com/@chozenboutique" },
+      { "type": "url", "id": "facebook", "label": "Facebook" },
+      { "type": "url", "id": "pinterest", "label": "Pinterest" },
+      { "type": "url", "id": "google_profile", "label": "Google Business Profile link" },
+      { "type": "url", "id": "google_review_link", "label": "Google review link" }
+    ]
+  },
+  {
+    "name": "Before launch",
+    "settings": [
+      { "type": "checkbox", "id": "show_placeholder_marks", "label": "Show 'to confirm' marks", "info": "Leave on until every fact is filled in. The launch checklist turns it off.", "default": true }
+    ]
+  }
+]

@@ -1,0 +1,8 @@
+{%- comment -%} Price line. "From £45" when variants differ. Placeholder products show "£—". {%- endcomment -%}
+{%- if product.tags contains 'sample' -%}
+  <span class="sample">{{ 'general.sample' | t }}</span> <span class="price">£—</span>
+{%- elsif product.price_varies -%}
+  <span class="price">{{ 'products.from' | t: price: product.price_min | money_without_trailing_zeros }}</span>
+{%- else -%}
+  <span class="price">{{ product.price | money_without_trailing_zeros }}</span>
+{%- endif -%}

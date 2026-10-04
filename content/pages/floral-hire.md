@@ -2,8 +2,8 @@
 url: /pages/floral-hire
 type: page
 template: page.hire
-title: Monthly Floral Hire, Enfield & North London | ChoZen Boutique
-meta: Monthly floral hire for offices, salons, restaurants and receptions in Enfield and North London. Arrangements installed and refreshed for you. Enquire today.
+title: Floral Hire, Enfield & North London | ChoZen Boutique
+meta: Monthly floral hire for offices, salons, restaurants and receptions in Enfield and North London. Arrangements installed and refreshed for you.
 h1: Monthly floral hire in Enfield and North London
 lede: >-
   We place floral arrangements in your business on a monthly hire, then refresh or swap them on a set schedule,
@@ -30,7 +30,7 @@ faq:
   - q: What happens if an arrangement is damaged?
     a: The hire agreement sets out what's covered [to confirm]. Tell us straight away and we'll sort a replacement.
   - q: Can you do flowers for a one-off event?
-    a: Event hire is [to confirm]. Use the form below and give the date, so we can tell you quickly either way.
+    a: Event hire is [to confirm]. Send the date with your enquiry and we'll tell you quickly either way.
 links: [/pages/contact, /pages/flower-subscription, /collections/faux-flowers, /policies/terms-of-service]
 ---
 

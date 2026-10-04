@@ -1,0 +1,13 @@
+{%- comment -%}
+  Responsive image from Shopify's CDN. Usage:
+  {% render 'image', image: img, sizes: '(min-width: 64em) 50vw, 100vw', eager: true, widths: '360, 540, 720, 900, 1080, 1440' %}
+{%- endcomment -%}
+{%- liquid
+  assign widths = widths | default: '180, 360, 540, 720, 900, 1080, 1440'
+  assign sizes = sizes | default: '100vw'
+  if eager
+    echo image | image_url: width: 1440 | image_tag: widths: widths, sizes: sizes, loading: 'eager', fetchpriority: 'high', alt: image.alt
+  else
+    echo image | image_url: width: 1440 | image_tag: widths: widths, sizes: sizes, loading: 'lazy', alt: image.alt
+  endif
+-%}

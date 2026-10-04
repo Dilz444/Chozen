@@ -7,7 +7,7 @@ meta: Carnations for the first anniversary, lily of the valley for the second, r
 h1: Anniversary flowers by year
 lede: >-
   By tradition, carnations mark the first wedding anniversary, lily of the valley the second and sunflowers the
-  third, with roses for the fifteenth and yellow roses with violets for the fiftieth. Lists vary, so treat them as inspiration.
+  third, with roses for the fifteenth and yellow roses with violets for the fiftieth. Lists vary, so use them as inspiration.
 schema: [Article, BreadcrumbList, FAQPage]
 breadcrumbs: [Home, Guides, Anniversary flowers by year]
 images:

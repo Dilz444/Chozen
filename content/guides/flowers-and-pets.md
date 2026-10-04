@@ -24,8 +24,8 @@ pollen off its fur after brushing past the flowers. True lilies (the *Lilium* fa
 Asiatic and tiger lilies) and day lilies are the ones to keep out of a home with a cat. Cutting off the pollen
 doesn't make them safe.
 
-If you think a cat has touched a lily, call a vet straight away. Don't wait for symptoms, because early treatment
-makes the biggest difference.
+If you think a cat has touched a lily, call a vet straight away. Don't wait for symptoms, because the sooner a vet
+sees the cat, the better its chances.
 
 Lilies are much less of a worry for dogs, though they can still cause an upset stomach.
 

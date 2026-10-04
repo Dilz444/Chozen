@@ -1,0 +1,30 @@
+{%- comment -%} Product card: one link over the whole card, square image, name, price, a same-day or UK badge. {%- endcomment -%}
+{%- liquid
+  assign local = false
+  if product.tags contains 'local-only'
+    assign local = true
+  endif
+  assign scene = 'bouquet'
+  case product.metafields.custom.line.value
+    when 'balloon'
+      assign scene = 'balloons'
+    when 'faux'
+      assign scene = 'faux'
+    when 'crystal'
+      assign scene = 'crystals'
+    when 'jewellery'
+      assign scene = 'jewellery'
+  endcase
+-%}
+<li class="card">
+  <div class="card__img{% if product.featured_image == blank %} ph ph--sm{% if forloop.index0 == 1 or forloop.index0 == 2 %} ph--alt{% endif %}{% endif %}"{% if product.featured_image == blank %} data-label="{{ 'general.photo_to_come' | t }}"{% endif %}>
+    {%- if product.featured_image != blank -%}
+      {% render 'image', image: product.featured_image, sizes: '(min-width: 48em) 25vw, 50vw', widths: '180, 280, 360, 540, 720' %}
+    {%- else -%}
+      <svg viewBox="0 0 400 400" aria-hidden="true" focusable="false"><use href="#s-{{ scene }}"/></svg>
+    {%- endif -%}
+    {%- if local -%}<span class="tag tag--same">{{ 'delivery.same_day_badge' | t }}</span>{%- endif -%}
+  </div>
+  <h3 class="card__t"><a href="{{ product.url }}">{{ product.title }}</a></h3>
+  <p class="card__p">{% render 'price', product: product %}</p>
+</li>

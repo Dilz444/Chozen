@@ -1,0 +1,27 @@
+{%- comment -%}
+  Visible crumbs and the matching BreadcrumbList. Pass crumbs as "Title|/url" pairs separated by ";;"; the current
+  page comes last with no URL. Usage: {% render 'breadcrumbs', trail: 'Delivery|/pages/delivery;;Winchmore Hill' %}
+{%- endcomment -%}
+{%- assign items = trail | split: ';;' -%}
+<nav class="crumbs wrap" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="{{ routes.root_url }}">{{ 'general.home' | t }}</a></li>
+    {%- for item in items -%}
+      {%- assign parts = item | split: '|' -%}
+      <li>{% if parts[1] and forloop.last == false %}<a href="{{ parts[1] }}">{{ parts[0] }}</a>{% else %}<span aria-current="page">{{ parts[0] }}</span>{% endif %}</li>
+    {%- endfor -%}
+  </ol>
+</nav>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": {{ request.origin | append: routes.root_url | json }} }
+      {%- for item in items -%}
+        {%- assign parts = item | split: '|' -%}
+        ,{ "@type": "ListItem", "position": {{ forloop.index | plus: 1 }}, "name": {{ parts[0] | json }}{% if parts[1] and forloop.last == false %}, "item": {{ request.origin | append: parts[1] | json }}{% else %}, "item": {{ canonical_url | json }}{% endif %} }
+      {%- endfor -%}
+    ]
+  }
+</script>
