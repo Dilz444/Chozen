@@ -27,7 +27,7 @@
   </div>
   <div class="wrap ftr__legal">
     <p>© {{ 'now' | date: '%Y' }} {{ shop.name }} · {% render 'tbc', text: settings.legal_line %}</p>
-    <p><a href="{{ shop.terms_of_service.url | default: '/policies/terms-of-service' }}">Terms</a> · <a href="{{ shop.privacy_policy.url | default: '/policies/privacy-policy' }}">Privacy</a> · <a href="/pages/cookies">Cookies</a> · <a href="{{ shop.refund_policy.url | default: '/policies/refund-policy' }}">Returns</a></p>
+    <p>{%- assign legal = linklists[section.settings.legal_menu] -%}{%- for link in legal.links -%}<a href="{{ link.url }}">{{ link.title }}</a>{% unless forloop.last %} · {% endunless %}{%- endfor -%}</p>
   </div>
 </footer>
 {% schema %}
@@ -37,7 +37,8 @@
     { "type": "text", "id": "blurb", "label": "Short description", "default": "Florist and gift boutique in Enfield, North London." },
     { "type": "link_list", "id": "menu_1", "label": "First menu", "default": "footer" },
     { "type": "link_list", "id": "menu_2", "label": "Second menu" },
-    { "type": "link_list", "id": "menu_3", "label": "Third menu" }
+    { "type": "link_list", "id": "menu_3", "label": "Third menu" },
+    { "type": "link_list", "id": "legal_menu", "label": "Legal links", "default": "footer" }
   ]
 }
 {% endschema %}

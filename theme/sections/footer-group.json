@@ -2,7 +2,7 @@
   "type": "footer",
   "name": "Footer group",
   "sections": {
-    "footer": { "type": "footer", "settings": { "menu_1": "footer-shop", "menu_2": "footer-help", "menu_3": "footer-about" } }
+    "footer": { "type": "footer", "settings": { "menu_1": "footer-shop", "menu_2": "footer-help", "menu_3": "footer-chozen", "legal_menu": "footer-legal" } }
   },
   "order": ["footer"]
 }

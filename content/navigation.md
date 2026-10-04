@@ -70,13 +70,13 @@ Shown on `/pages/delivery` and in the footer Help column as a sub-list on deskto
 ### Help (`footer-help`)
 - Delivery areas and prices → `/pages/delivery`
 - Returns and refunds → `/policies/refund-policy`
-- Flower care → `/blogs/guides` [guide handle to confirm]
+- Flower care → `/blogs/guides/how-to-make-flowers-last`
 - FAQs → `/pages/faqs`
 - Contact → `/pages/contact`
 
 ### ChoZen (`footer-chozen`)
 - Beyzan's story → `/pages/about`
-- Crystal meanings → `/blogs/guides` [guide handle to confirm]
+- Crystal meanings → `/blogs/guides/crystal-meanings`
 - Journal → `/blogs/journal`
 - Buy-back programme → `/pages/buy-back-programme`
 - Ethical sourcing → `/pages/ethical-sourcing`

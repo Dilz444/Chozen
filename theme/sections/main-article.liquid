@@ -7,7 +7,8 @@
   <header class="pg-head">
     <h1>{{ article.title }}</h1>
     {%- if article.excerpt != blank -%}<div class="lede">{{ article.excerpt }}</div>{%- endif -%}
-    <p class="article-meta">By <a href="/pages/about">Beyzan</a> · {{ 'blogs.updated' | t: date: article.updated_at | date: '%-d %B %Y' }}</p>
+    {%- assign updated = article.updated_at | date: '%-d %B %Y' -%}
+    <p class="article-meta">By <a href="/pages/about">Beyzan</a> · {{ 'blogs.updated' | t: date: updated }}</p>
   </header>
   {%- if article.image -%}
     <div class="article-hero">{% render 'image', image: article.image, eager: true, sizes: '(min-width: 64em) 1160px, 100vw' %}</div>

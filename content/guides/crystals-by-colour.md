@@ -3,7 +3,7 @@ url: /blogs/guides/crystals-by-colour
 type: article
 template: article.guide
 title: Crystals by Colour, a Gift Guide | ChoZen Boutique
-meta: Pink, purple, blue, green, yellow, black and white crystals: which stones come in each colour, what gives them that colour and which ones fade in sunlight.
+meta: "Pink, purple, blue, green, yellow, black and white crystals: which stones come in each colour, what gives them that colour and which ones fade in sunlight."
 h1: Which crystals come in which colour?
 lede: >-
   Pink crystals include rose quartz and rhodonite, purple ones amethyst and lepidolite, blue ones lapis lazuli and
