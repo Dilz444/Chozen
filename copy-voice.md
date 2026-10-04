@@ -1,100 +1,95 @@
-# Copy voice: ChoZen Boutique
+# How ChoZen sounds
 
-The copy standard for every page, product, email and social caption. The machine-checkable half is
-`_gate/copy-lint-rules.json`. Rule ids in brackets point to it. Where this file and the lint disagree, this file
-wins and the lint gets fixed.
-
-Ported from the Book London Nightclubs (Mayfair) build. Everything generic came across: answer-first openers,
-question headings, no AI tells, no page talking about itself, no research notes, numbers the way people say them.
-Nothing nightclub-specific came across.
-
-> **[pending capture]** Her own copy and About page haven't been read yet (`open-questions.md` A1). When the
-> capture runs, read every page of hers in `capture/pages/*/copy.md`, pull out the phrases she uses about flowers,
-> customers and Cyprus, and add them under "Her words" below. Her phrasing beats ours wherever it's clear and true.
+> **Read this first.** This guide should be built from Beyzan's own writing: her About page, her guides, her
+> Instagram captions. None of that has been readable from the build environment yet (the site and Instagram are
+> blocked; there's nothing in Drive). So what follows is her voice as you and the brief describe it, plus the one
+> piece of her story we have: jasmine crowns in Cyprus. Every example below is **illustrative** and marked so.
+> When her pages are captured, her real sentences replace the examples, and anything here that doesn't match how
+> she writes gets changed to match her, not the other way round.
 
 ---
 
-## The voice in six lines
+## Who she is when she writes
 
-1. **Who is speaking:** Beyzan, the florist. She chooses the stems, makes up the bouquet and knows the roads it goes down. "We" for the shop, "I" on her story and in her notes.
-2. **Who she's talking to:** someone with a phone out who wants a gift to arrive today, often for someone they love and sometimes for someone who's grieving. They're in a hurry and slightly worried it won't look like the photo.
-3. **How it sounds:** warm, plain and sure of itself. She says what she'll do and when. "Order by 10am and it's at their door today."
-4. **Specifics over adjectives:** the stems, the colours, the size in centimetres, the postcode, the time. If a sentence would fit any florist, it isn't finished.
-5. **Short sentences, one idea each.** British English. Contractions are fine. The brand name never does the work "we" should do.
-6. **No selling words, no research notes, no talking about the page.** She knows her flowers. She doesn't hype, hedge or explain how the website works.
+A florist who started with jasmine crowns in Cyprus and still makes things by hand. She's writing to someone who
+is buying for a person they love: a mum, a partner, a friend having a hard week, a family saying goodbye.
 
-## Her words [pending capture]
+Her writing is:
 
-To be filled from her pages. Until then, use only what the brief gives: "hand-delivered", "same day", "jasmine
-flower crowns in Cyprus", "Enfield", "North London".
+- **Warm.** She sounds pleased you're here and glad to help.
+- **Personal.** She talks as herself. She says what she likes and why, and she remembers where it all began.
+- **Generous.** She explains things fully, shares how to make the flowers last, and helps you choose even if you end up buying something small.
+- **Calm.** Nothing is urgent or shouty. Even the cut-off time reads as a kind reminder, not a countdown.
+- **A little nostalgic.** Scent, gardens, the crowns she made as a girl, flowers that remind people of someone. Light touches, never sentimental.
 
----
+The reader should come away feeling looked after, as if they'd asked a florist they already know for advice.
 
-## The rules
+## How that shows up on the page
 
-1. **The opening paragraph is the answer.** At most two sentences and 45 words. It answers the page's main question (what this is, where, by when, how much) and makes sense quoted alone by Google or ChatGPT. It names ChoZen Boutique at most once. It never opens with "Yes" or "No" unless the H1 is a yes/no question, and never with a numeral. [`ledeRules`]
-2. **Headings are questions a person would type or say.** "How long do faux flowers last?" "Can you deliver flowers today in Winchmore Hill?" No colons, no two questions in one heading, 14 words at most, never "we" in the question ("Who are you?", not "Who are we?"), no pasted search strings ("Florist Enfield near me?"). The approved non-question H2s are: product and collection names, "What's in it", "Size", "Delivery", "Care", "More questions", "You might also like". [`headingRules`]
-3. **Each answer starts with its answer.** The first sentence under a question heading answers it. Detail comes after.
-4. **Each fact once per page.** The cut-off, the delivery fee, the delivery area, the returns rule: one statement each in the body. The product form, the delivery box and the sticky bar don't count, because that's where people act. Later mentions refer back in their own words. [`repetitionRules`]
-5. **No health claims, ever.** Crystals and flowers don't heal, treat, cure, relieve, prevent, detox, calm anxiety, help sleep, balance energy or protect. Crystal meanings are tradition and story: "traditionally associated with", "in crystal lore", "often given as a symbol of", "said to". Every crystal page carries the short disclaimer. Full list and rewrites: `compliance/crystals.md`. [`bannedPhrases.healthClaims`]
-6. **No promises we can't keep.** No "guaranteed", "always fresh", "lasts forever", "the best florist in Enfield", "award-winning", "luxury" as a claim, float times without a typical range, lasting times without conditions. Faux flowers "keep their shape and colour for years with a dust now and then", not "forever". [`bannedPhrases.overclaims`]
-7. **Specifics over adjectives.** "Twelve red roses, eucalyptus and waxflower, about 45cm tall" beats "a stunning luxurious bouquet". Banned: stunning, gorgeous (except in a quoted review), luxurious, exquisite, breathtaking, curated, elevate, timeless, bespoke (say "made to order" or "made for you"), indulge, iconic, vibrant, unforgettable, "perfect for", "the perfect gift". [`bannedPhrases.sellingWordsAndAiTells`]
-8. **No AI tells.** delve, dive into, embark, tapestry, "testament to", "it's worth noting", "in conclusion", navigate, game-changer, "when it comes to", "not only … but also", "whether you're … or …", "look no further", "in the heart of", "something for everyone", "rest assured", "we've got you covered", "elevate your", "unlock", seamless, nestled, boasts. Three em dashes per page at most. [`bannedPhrases.sellingWordsAndAiTells`]
-9. **No page talking about itself.** Cut "This page covers", "Below you'll find", "Scroll down to", "Welcome to our website", "Browse our collection of". The page shows it. [`bannedPhrases.processNarration`]
-10. **No research notes or caveats in visible text.** No "(unverified)", "as of [date]", "according to", source names in brackets, "we believe" about facts. Unconfirmed facts aren't content: they stay as a visible `[to confirm]` placeholder in the build, which the gate refuses at launch. [`bannedPhrases.researchNotes`, `placeholders`]
-11. **No stacked colons or semicolons.** One per sentence at most. Labels stay on labels ("Size: 45cm" in a spec list is fine; in a sentence it isn't). [`p-colon-chain`, `p-semicolon-chain`]
-12. **No templated sentence repeated down a page.** No identical sentence of six or more words three times on one page. Each product card line says something only that product has. [`rep-identical-sentence`]
-13. **The brand is not the subject.** No "ChoZen Boutique offers / provides / is proud to". Say "we". At most two brand mentions in body prose; the lede and legal lines don't count. [`p-brand-subject`, `p-brand-count`]
-14. **Numbers the way a person says them.** "Order by 10am", "from £45", "about 40cm tall", "two to three weeks". Never "10:00", never "£45.00" in prose, never a sentence starting with a numeral. Postcodes are capitals with no full stops (EN2, N21).
-15. **UK English and UK words.** Colour, jewellery, personalised, organise, favourite, centre, post (not mail), postcode (not zip), mum, Mother's Day, basket (not cart in visible text; Shopify's "cart" URL stays), checkout, mobile. [`bannedPhrases.usTerms`]
-16. **Kind words for hard days.** Sympathy pages and products: no exclamation marks, no "celebrate", no urgency language, no countdowns, no upsell of balloons. Plain, gentle, practical: where we can deliver, by when, what to write on the card.
-17. **Urgency only when it's true.** The countdown shows only before the real cut-off on a real delivery day. No fake scarcity ("only 2 left" unless stock says so), no fake timers, no "order in the next" after the cut-off. [`dark-patterns`]
-18. **Reviews are real or absent.** Never write, edit or paraphrase a review. No star ratings in copy or schema until real reviews exist. [`fake-reviews`]
-19. **Alt text describes the photo, not the SEO.** "Twelve red roses with eucalyptus in kraft paper, tied with cream ribbon." Not "best red roses bouquet Enfield same day delivery". Under 125 characters. Decorative images get `alt=""`.
+**Sentences have room to breathe.** Full, flowing sentences that join ideas with "and", "so" and "because". Some
+are short, but she never writes a run of clipped two- and three-word sentences. That's a hard-sell register, and it isn't her.
 
----
+**She talks about the person receiving the flowers.** "Something soft for your mum's birthday" rather than "Pink
+bouquet, 45cm". The practical details come next, gently.
 
-## Before and after (patterns to expect on the Wix site)
+**"I" for her, "we" only where it's true.** On the About page, in the founder line and in her notes, it's "I". Use
+"we" only if other people do work in the shop (`open-questions.md`). Never "the team" or "our experts".
 
-Her own sentences replace these examples once the capture exists. The patterns are the common ones on Wix florist
-and crystal shops, so the rewrite rules are ready.
+**She explains, she doesn't instruct.** "If you can, give the stems a fresh trim when they arrive. It helps them drink"
+rather than "Trim stems on arrival."
 
-### 1. A product with a placeholder name
-**Before:** "Flower 2 — £100"
-**After:** "Blush garden roses with jasmine — from £[PRICE]. Ten blush garden roses, white spray roses and trailing jasmine, hand-tied in ivory paper. About 45cm tall."
-**What changed:** the name says what it is. The first line is what arrives, with a size, so nobody's surprised at the door.
+**Detail with feeling.** Name the flowers, the colours, how it's wrapped, how big it is, and say why she chose
+them: "a little eucalyptus, because I love how it smells when you unwrap it". Only put in details that are true of the real product.
 
-### 2. A crystal health claim
-**Before (typical):** "Amethyst heals anxiety and helps you sleep."
-**After:** "Amethyst has long been associated with calm and quiet evenings, and it's a favourite on bedside tables. A purple cluster about 6cm across."
-**What changed:** the effect claim became tradition, and the sentence ends on what you actually get.
+**Gentle with grief.** Sympathy pages are quiet and practical. No exclamation marks, no balloons, no countdowns,
+nothing about celebrating. Short reassurance, where she can deliver and what you might write.
 
-### 3. A heading written for a search engine
-**Before:** "Same Day Flower Delivery Enfield | Florist Near Me"
-**After:** "Can I get flowers delivered in Enfield today?"
-**What changed:** a question a person asks. The answer's first sentence gives the cut-off and the area.
+**Urgency is a kindness, not pressure.** "If you'd like them to arrive today, order by 10am and I'll make sure they go out
+this morning." Never "Hurry", "Don't miss out", "Only 2 left", or a timer after the cut-off.
 
-### 4. A page that describes itself
-**Before:** "Welcome to our crystal library! Below you'll find information on all our crystals."
-**After:** "Every crystal we sell, with its colour, where it's found and the meaning it's traditionally given."
-**What changed:** the opener says what's there, in a sentence that works on its own.
+## What she doesn't sound like
 
-### 5. Hype
-**Before:** "Our stunning luxury bouquets are the perfect gift for any occasion!"
-**After:** "Bouquets made up in Enfield on the morning they're delivered, from £[PRICE]."
-**What changed:** one checkable fact and a price instead of three adjectives. (The "made up the morning" fact goes in only once she confirms it.)
+| Not her | Why | Closer to her (illustrative) |
+|---|---|---|
+| "Order by 10am. Delivered today. No fuss." | Clipped, salesy, sounds like a booking service | "Order by 10am and your flowers can be with them this afternoon." |
+| "Message us. We'll sort it." | Transactional, borrowed from nightlife and booking sites | "Give me a call or send a message and we'll work out something lovely together." |
+| "Our stunning luxury bouquets are the perfect gift!" | Hype, says nothing | "A soft, scented bouquet of garden roses, wrapped in ivory paper. The kind I'd choose for someone I love." |
+| "Unlock the healing power of amethyst." | AI tell and a banned health claim | "Amethyst has long been thought of as a calming stone, and its deep purple makes it a lovely thing to keep on a bedside table." |
+| "Welcome to our website! Browse our collection below." | The page talking about itself | Start with the flowers, or with her. |
+| "Whether you're celebrating a birthday or saying thank you…" | Stock AI opener | Start with one real situation: "Birthdays are my favourite thing to make flowers for." |
 
----
+## Search, without losing her
 
-## Words she uses (the starter set until the capture)
+The method is the same as any good shop site; only the wording is hers.
 
-hand-delivered, same day, order by 10am, made up, hand-tied, stems, seasonal, card message, the door, Enfield,
-North London, keepsake, kept for years, gift-wrapped (if true), posted UK-wide, traditionally associated with,
-in crystal lore, a symbol of.
+- **The first one or two sentences answer the question the page exists for**, so Google and assistants can quote them,
+  but in her voice. Not "Same-day flower delivery Enfield: order by 10am." Instead: "I hand-deliver fresh flowers across
+  Enfield and North London the same day when you order by 10am."
+- **Headings can be the questions people ask**, worded the way a customer would ask her in the shop: "Can you deliver
+  flowers today in Winchmore Hill?", "What does rose quartz mean?", "How do I keep my roses fresh for longer?"
+- **Places are named naturally**: "Enfield, North London", the area names people use, postcodes where they help.
+- Titles and meta descriptions are the one place she can be brief, because the space is small. They should still be warm.
 
-## Where the rules and SEO pull apart (and what wins)
+## Crystals: tradition, not effects
 
-1. **Place names in headings.** Area pages need "Winchmore Hill" in the H1 and title. Keep it, but in a sentence a person would say ("Flowers delivered today in Winchmore Hill, N21"), never a stacked keyword string.
-2. **"Florist Enfield" is ambiguous** (Enfield, Connecticut fills US results). Titles say "Enfield, London" or carry a postcode. That's a fact, not keyword stuffing.
-3. **FAQ blocks.** Questions mirror what people ask; answers stay short. FAQPage schema only mirrors visible text and isn't a ranking lever (Google retired the FAQ rich result for most sites).
-4. **Area pages are not doorway pages.** One page per real delivery area group (8–10), each with that area's fee, the roads or landmarks we really deliver to, and real delivery photos as they come. If an area page can't say something only it can say, it gets merged.
+Crystals are part of her shop and her story, and she can write about them lovingly, through tradition, history,
+colour and gifting. Never say a stone heals, treats, cures, relieves, protects, calms, balances or helps sleep.
+Instead use "traditionally associated with", "long thought of as", "in crystal folklore", "often given as a symbol
+of". Every crystal page ends with the short disclaimer in `compliance/crystals.md` §5. The full rewrite table is
+`compliance/crystals.md`.
+
+## Facts
+
+She would never tell a customer something that isn't true, so neither do we. Prices, delivery areas and fees, days,
+sizes, materials, how long things last, reviews, years in business: if it isn't confirmed, it's a visible
+`[to confirm]` that the checks refuse at launch. Her feelings and memories also aren't ours to invent. Lines like
+"what I remember about the jasmine" stay as `[her words]` until she gives them.
+
+## Her own words (to fill from the capture)
+
+| Where | Her phrase | Use it for |
+|---|---|---|
+| About page | [pending capture] | founder line, About, homepage story |
+| Guides | [pending capture] | how she explains |
+| Instagram captions | [pending capture] | how she talks about her work day to day |
+| Product names she uses | [pending capture] | naming |

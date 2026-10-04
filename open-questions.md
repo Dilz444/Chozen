@@ -9,25 +9,31 @@ Ordered by how much they hold back the shop.
 
 ## A. Blockers I can't clear from here
 
-### A1. The live Wix site is unreachable from the build environment — capture not done
-The cloud environment blocks `www.chozenboutique.co.uk`, `static.wixstatic.com`, Google, archive.org,
-Instagram, TikTok and Facebook (proxy 403 on every request). So **her palette, fonts, logo, photos and copy
-have not been seen**. Every document that depends on them is tagged **[pending capture]**.
-- **What you do (pick one):**
-  1. On your laptop: `npm install && npm run capture`, then commit and push `capture/` (steps in `capture/README.md`). About 10 minutes of your time.
-  2. Or allow the hosts in the cloud environment: environment menu → Edit → Network access → Custom → add
-     `chozenboutique.co.uk`, `*.chozenboutique.co.uk`, `*.wixstatic.com`, `*.parastorage.com`, `*.wix.com`
-     (https://code.claude.com/docs/en/cloud-environments#network-access). A new session then runs the capture.
-- **Also by hand:** the Google `site:` check and the Wix SEO "Site inspection" export (Google blocks scripts). Paste into `capture/indexed.md`.
-- **Default meanwhile:** a provisional palette and type pairing in `theme/assets/tokens.css` (one file), placeholder
-  copy written from your brief, and the 301 map built from Wix's standard URL patterns.
+### A1. The live site, Wix's image server and the Wix API are unreachable from here (re-checked after Dilz's latest message)
+Still HTTP 403 from the environment's egress proxy for `www.chozenboutique.co.uk`, `static.wixstatic.com` and
+`www.wixapis.com`. Until that changes there is **no capture, no screenshot of her site, no reading of her copy,
+captions or palette, and no API writes**. Nothing has been screenshotted from the live site so far: the only
+screenshots in this repo are of mockups and the (now parked) Shopify theme.
+- **Fix:** environment menu (session title bar) → Edit → Network access → Custom → Allowed domains: add
+  `chozenboutique.co.uk`, `*.chozenboutique.co.uk`, `*.wixstatic.com`, `*.parastorage.com`, `*.wix.com`,
+  `*.wixapis.com`, `www.instagram.com`, `*.cdninstagram.com`; keep the default package-manager list. Save. If this session still gets 403s afterwards, start a
+  new session on this repo. Docs: https://code.claude.com/docs/en/cloud-environments#network-access
+- **Or** run `npm install && npx playwright install chromium && npm run capture` on a laptop and push `capture/`.
 
-### A2. The Shopify store doesn't exist yet
-I can't create accounts. The theme is built offline against a local preview that renders the real Liquid files
-(`npm run preview`). See `build-plan.md` §"Create the store" for the exact steps. Once the store exists, `shopify theme dev`
-gives a live preview link for your phone.
+### A2. `reference-home.png` isn't in the repo
+Not in the working tree or on `origin/main` (checked after Dilz's message). Commit it to the repo root and push, and
+the capture check compares against it.
 
----
+### A3. No Wix API key
+No `.env` exists, and `www.wixapis.com` is blocked anyway. When both are fixed: create `.env` locally with
+`WIX_API_KEY=…` and `WIX_SITE_ID=…` (git-ignored; never commit, paste or screenshot it). Make the key in Wix → Settings →
+API Keys with only the Stores, Blog and SEO permissions needed.
+
+### A4. Platform: staying on Wix (Dilz, latest message)
+The Shopify plan is parked: nothing deleted, nothing more built on it. See `STATUS.md` for what carries over.
+
+### A5. "I" or "we" in her copy?
+The voice samples use "I" (Beyzan). If anyone else makes or delivers the flowers, it becomes "we" where true.
 
 ## B. Business facts I must not invent (the build shows a visible placeholder until answered)
 

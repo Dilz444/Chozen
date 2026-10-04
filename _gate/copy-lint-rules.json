@@ -1,16 +1,5 @@
 {
- "_about": "Copy lint for ChoZen Boutique: the machine-checkable half of copy-voice.md. Ported from the Book London Nightclubs gate (generic families only) plus ChoZen's health-claims, overclaim, placeholder and dark-pattern rules. Read by _gate/checks/copy.mjs. level: fail (default) | warn | info.",
- "scope": {
-  "visible": "text inside <main>, plus <title>, meta description and image alt",
-  "excludeSelectors": [
-   ".tbc",
-   ".sample",
-   "script",
-   "style",
-   ".ph",
-   "[data-gate-skip]"
-  ]
- },
+ "_about": "Copy lint for ChoZen Boutique, written for this brand (copy-voice.md). Catches AI tells, hype, borrowed registers, health claims, pressure tactics and unconfirmed facts. Scope 'visible' = page text, title, meta description and image alt text. level: fail | warn.",
  "exceptions": {
   "strip": [
    "Crystals are sold as decorative and spiritual items. Their traditional meanings are not scientifically proven and are not a substitute for medical advice or treatment.",
@@ -18,147 +7,129 @@
    "heat-treated",
    "untreated"
   ],
-  "pathRuleWhitelist": {
-   "/blogs/guides/flowers-and-pets": [
-    "health-claims:pain",
-    "health-claims:conditions",
-    "health-claims:medical"
-   ],
-   "/policies/privacy-policy": [
-    "health-claims:medical"
-   ],
-   "/policies/refund-policy": [
-    "health-claims:medical"
-   ],
-   "/blogs/guides/balloon-care": [
-    "health-claims:medical"
+  "pageRuleWhitelist": {
+   "flowers-and-pets": [
+    "health:pain",
+    "health:conditions"
    ]
   }
  },
- "bannedPhrases": {
-  "sellingWordsAndAiTells": [
+ "rules": {
+  "aiTells": [
    {
-    "id": "sell-core",
-    "match": "regex",
-    "pattern": "\\belevat(e|ed|es|ing)\\b|\\bunlock\\w*\\b|\\bultimate\\b|\\bcurated\\b|\\bnestled\\b|\\bvibrant\\b|\\bboasts?\\b|\\bseamless(ly)?\\b",
-    "flags": "i",
-    "reason": "Brand brief banned words and the classic AI set.",
-    "scope": "visible"
-   },
-   {
-    "id": "sell-phrases",
-    "match": "regex",
-    "pattern": "\\bwhether you['’]re\\b|\\blook no further\\b|\\bin the heart of\\b|\\bsomething for everyone\\b|\\bthe perfect (night|place|spot|way|venue|choice)\\b|\\bperfect for\\b|\\ba night to remember\\b|\\bnext level\\b|\\btake your night\\b|\\bthe place to be\\b|\\bsee and be seen\\b|\\bwe['’]ve got you covered\\b|\\brest assured\\b|\\btreat yourself\\b",
-    "flags": "i",
-    "reason": "Stock selling phrases.",
-    "scope": "visible"
-   },
-   {
-    "id": "sell-adjectives",
-    "match": "regex",
-    "pattern": "\\bunforgettable\\b|\\bworld-class\\b|\\bpremier\\b|\\bluxurious\\b|\\bindulge\\b|\\bimmers(e|ive)\\b|\\biconic\\b|\\bhidden gem\\b|\\bbespoke\\b|\\bstate-of-the-art\\b|\\btop-notch\\b|\\bsecond to none\\b|\\bhot ?spot\\b|\\brenowned\\b|\\blegendary\\b|\\bstunning\\b|\\bbreathtaking\\b|\\belectric atmosphere\\b|\\bbuzzing\\b|\\beffortless(ly)?\\b|\\bhassle-free\\b|\\bstress-free\\b|\\blavish\\b|\\bopulent\\b|\\bsophisticated\\b|\\bdiscerning\\b|\\belite\\b|\\bA-list\\b|\\bstar-studded\\b|\\bred[- ]carpet\\b|\\bmust-(visit|see)\\b|\\bglamorous\\b",
-    "flags": "i",
-    "reason": "Adjectives instead of specifics. Give the night, the price, the street.",
-    "scope": "visible"
-   },
-   {
-    "id": "ai-tells",
-    "match": "regex",
-    "pattern": "\\bdelve\\b|\\bdive into\\b|\\bembark\\b|\\btapestry\\b|\\btestament to\\b|\\bit['’]s worth noting\\b|\\bin conclusion\\b|\\bnavigat(e|ing) the\\b|\\bgame-changer\\b|\\bwhen it comes to\\b|\\bnot only\\b[^.]{0,60}\\bbut also\\b",
+    "id": "ai-words",
+    "pattern": "\\bdelve\\w*|\\bdive into\\b|\\bembark\\w*|\\btapestry\\b|\\btestament to\\b|\\bit['’]s worth noting\\b|\\bin conclusion\\b|\\bnavigat(e|ing) the\\b|\\bgame[- ]changer\\b|\\bwhen it comes to\\b|\\bnot only\\b[^.]{0,60}\\bbut also\\b|\\bin today['’]s\\b|\\bever-evolving\\b|\\bseamless(ly)?\\b|\\bunlock\\w*\\b|\\belevate\\w*\\b|\\bnestled\\b|\\bboasts?\\b|\\brealm\\b|\\bresonate\\w*\\b",
     "flags": "i",
     "reason": "Machine-writing tells.",
+    "level": "fail",
     "scope": "visible"
    },
    {
-    "id": "sell-florist",
-    "match": "regex",
-    "pattern": "\\bgorgeous\\b|\\bexquisite\\b|\\btimeless\\b|\\bthe perfect gift\\b|\\bluxury\\b|\\bpremium\\b|\\belevate\\b|\\bwow\\b|\\bbest florist\\b|\\baward[- ]winning\\b",
+    "id": "ai-openers",
+    "pattern": "\\bwhether you['’]re\\b|\\blook no further\\b|\\bin the heart of\\b|\\bsomething for everyone\\b|\\bwe['’]ve got you covered\\b|\\brest assured\\b|\\bthat['’]s where we come in\\b|\\bthe perfect (gift|way|choice) (for|to)\\b",
     "flags": "i",
-    "reason": "Florist hype. Say what's in it, the size and the price.",
+    "reason": "Stock openers and filler. Start with a real person or a real flower.",
+    "level": "fail",
+    "scope": "visible"
+   },
+   {
+    "id": "em-dash-heavy",
+    "pattern": "—[^—.]{0,80}—",
+    "flags": "i",
+    "reason": "Paired em dashes are an AI habit; use commas or a full stop.",
+    "level": "warn",
     "scope": "visible"
    }
   ],
-  "processNarration": [
+  "hype": [
    {
-    "id": "pn-this-page",
-    "match": "regex",
-    "pattern": "\\bthis page (covers|lists|shows|explains)\\b|\\b(is|are) (listed|shown) (above|below)\\b",
+    "id": "hype-words",
+    "pattern": "\\bstunning\\b|\\bgorgeous\\b|\\bexquisite\\b|\\bbreathtaking\\b|\\bluxur(y|ious)\\b|\\bpremium\\b|\\bcurated\\b|\\bbespoke\\b|\\btimeless\\b|\\biconic\\b|\\bvibrant\\b|\\bunforgettable\\b|\\bworld-class\\b|\\bbest florist\\b|\\baward[- ]winning\\b|\\bindulge\\b|\\bwow\\b",
     "flags": "i",
-    "reason": "Page narration.",
+    "reason": "Adjectives instead of detail. Say what's in it, how it's wrapped and why she chose it.",
+    "level": "fail",
     "scope": "visible"
-   },
+   }
+  ],
+  "pageTalk": [
    {
-    "id": "pn-welcome",
-    "match": "regex",
-    "pattern": "\\bwelcome to (our|the) (website|site|shop|store)\\b|\\bbelow you['’]ll find\\b|\\bscroll (down|below)\\b|\\bbrowse our\\b|\\bclick here\\b",
+    "id": "page-talk",
+    "pattern": "\\bwelcome to (our|the) (website|site|shop|store)\\b|\\bbelow you['’]ll find\\b|\\bscroll (down|below)\\b|\\bbrowse our\\b|\\bclick here\\b|\\bthis page (covers|lists|shows|explains)\\b",
     "flags": "i",
     "reason": "The page describing itself.",
+    "level": "fail",
     "scope": "visible"
    }
   ],
-  "researchNotes": [
+  "borrowedRegister": [
    {
-    "id": "rn-notes",
-    "match": "regex",
-    "pattern": "\\(unverified\\)|\\(secondary\\)|\\bunverified\\b|\\baccording to (wikipedia|our research)\\b|\\bas of \\d{1,2} \\w+ 20\\d\\d\\b|\\[Solicitor\\]|\\[TS\\]",
+    "id": "nightlife",
+    "pattern": "\\bguest ?list\\b|\\bVIP\\b|\\bbottle service\\b|\\bminimum spend\\b|\\bpromoter\\b|\\bdoor staff\\b|\\bon the door\\b|\\bname['’]s on\\b|\\bclub(s|bing)?\\b(?! together)|\\bnight out\\b|\\btonight['’]s\\b|\\bbook (a|your) table\\b",
     "flags": "i",
-    "reason": "Research notes don't go in visible text.",
+    "reason": "Nightlife and booking-service register. Not ChoZen.",
+    "level": "fail",
+    "scope": "visible"
+   },
+   {
+    "id": "booking-service",
+    "pattern": "\\bmessage us\\b|\\bwe['’]ll sort it\\b|\\bsort it\\b|\\bno booking fee\\b|\\bwe reply within\\b|\\breply in \\d+ minutes\\b|\\bno fuss\\b|\\bjob done\\b|\\bsorted\\b",
+    "flags": "i",
+    "reason": "Transactional booking-service phrases. She invites, she doesn't process.",
+    "level": "fail",
+    "scope": "visible"
+   },
+   {
+    "id": "clipped-run",
+    "pattern": null,
+    "flags": "i",
+    "reason": "Three or more very short sentences in a row (four words or fewer) read as hard-sell, not as her.",
+    "level": "warn",
+    "scope": "visible"
+   }
+  ],
+  "pressure": [
+   {
+    "id": "dark-patterns",
+    "pattern": "\\bonly \\d+ left\\b|\\bselling fast\\b|\\bhurry\\b|\\blast chance\\b|\\bdon['’]t miss out\\b|\\bact now\\b|\\bbefore it['’]s too late\\b|\\blimited time\\b",
+    "flags": "i",
+    "reason": "Pressure tactics (DMCC Act, CAP 3). Urgency only as a kind, true reminder.",
+    "level": "fail",
+    "scope": "visible"
+   }
+  ],
+  "overclaims": [
+   {
+    "id": "overclaims",
+    "pattern": "\\blasts? forever\\b|\\bnever (wilts?|fades?|dies)\\b|\\balways fresh\\b|\\b100% (fresh|satisfaction)\\b|\\bguarantee(d)?\\b|\\bthe best\\b|\\bnumber one\\b|\\b#1\\b",
+    "flags": "i",
+    "reason": "Promises she can't keep (CAP 3.7).",
+    "level": "fail",
     "scope": "visible"
    }
   ],
   "usTerms": [
    {
     "id": "us-spelling",
-    "match": "regex",
-    "pattern": "\\b(color|colors|center|favorite|jewelry|personalized|organize|realize|cozy|fulfill|gray|mom|zip code|cell ?phone)\\b",
+    "pattern": "\\b(color|colors|center|favorite|jewelry|personalized|organize|realize|cozy|gray|mom|zip code|cell ?phone|shopping cart|add to cart|vacation)\\b",
     "flags": "",
-    "reason": "UK English: colour, jewellery, personalised, mum, postcode, mobile.",
-    "scope": "visible",
-    "caseSensitive": true
-   },
-   {
-    "id": "us-terms",
-    "match": "regex",
-    "pattern": "\\b(shopping cart|add to cart|your cart|mail(ed)? to you|vacation)\\b",
-    "flags": "i",
-    "reason": "UK words: basket, post.",
-    "scope": "visible"
-   }
-  ],
-  "overclaims": [
-   {
-    "id": "oc-forever",
-    "match": "regex",
-    "pattern": "\\blasts? forever\\b|\\bnever (wilts?|fades?|dies)\\b|\\balways fresh\\b|\\b100% (fresh|satisfaction)\\b|\\bguaranteed\\b",
-    "flags": "i",
-    "reason": "Promises we can't keep (CAP 3.7).",
-    "scope": "visible"
-   }
-  ],
-  "darkPatterns": [
-   {
-    "id": "dp-scarcity",
-    "match": "regex",
-    "pattern": "\\bonly \\d+ left\\b|\\bselling fast\\b|\\bhurry\\b|\\blast chance\\b|\\bdon['’]t miss out\\b",
-    "flags": "i",
-    "reason": "Fake urgency or scarcity (DMCC Act, CAP 3).",
+    "reason": "UK English: colour, jewellery, personalised, mum, postcode, basket.",
+    "level": "fail",
     "scope": "visible"
    }
   ],
   "contact": [
    {
-    "id": "ct-hotmail",
-    "match": "regex",
+    "id": "hotmail",
     "pattern": "hotmail\\.(com|co\\.uk)",
     "flags": "i",
-    "reason": "The domain email replaces hotmail everywhere public (fixes.md #10).",
-    "scope": "html",
-    "level": "warn"
+    "reason": "Replace with the domain email once it exists (fixes.md).",
+    "level": "warn",
+    "scope": "html"
    }
   ]
  },
- "healthClaims": {
-  "_about": "BLOCK list from compliance/crystals.md §3. Runs on every page: visible text, title, meta, alt text and JSON-LD.",
+ "health": {
+  "_about": "From compliance/crystals.md §3 (BLOCK list). Runs on everything visible plus JSON-LD.",
   "patterns": [
    "\\bheal(s|ed|ing|er|ers)?\\b",
    "\\bcur(e|es|ed|ing)\\b",
@@ -239,103 +210,56 @@
   ],
   "flags": "i"
  },
- "placeholders": {
-  "_about": "Unconfirmed facts. Warn in preview mode, FAIL in launch mode (npm run gate -- --launch).",
-  "pattern": "\\[(to confirm|PRICE|FEE|ADDRESS|HOURS|LEGAL NAME|EN POSTCODE|ICO NUMBER|TRADING NAME|her words to come|her notes to come|weeks ahead|x|[A-Z][A-Z ]{2,})[^\\]]*\\]|\\bSample\\b(?=[: ])|£—",
-  "flags": ""
+ "sympathy": {
+  "_about": "Pages and products about loss: copy-voice.md 'Gentle with grief'.",
+  "match": "sympathy|funeral|condolence|loss",
+  "forbid": [
+   "!",
+   "\\bcelebrat\\w*",
+   "\\bballoon",
+   "\\border in the next\\b",
+   "\\bhurry\\b",
+   "\\bdon['’]t miss\\b"
+  ]
  },
- "headingRules": {
+ "placeholders": {
+  "_about": "Unconfirmed facts and her words not yet given. Warn while building, fail at launch.",
+  "pattern": "\\[(to confirm|PRICE|FEE|ADDRESS|HOURS|LEGAL NAME|EN POSTCODE|ICO NUMBER|TRADING NAME|her words[^\\]]*|her line[^\\]]*|her notes[^\\]]*|weeks ahead|x|[A-Z][A-Z ]{2,})[^\\]]*\\]|\\bSample\\b|£—"
+ },
+ "headings": {
+  "_about": "Generic method: headings may be the questions a customer asks, in her words. Approved non-question headings are product and section names.",
   "fail": [
    {
     "id": "h-colon",
     "pattern": ":",
-    "reason": "No colons in headings."
-   },
-   {
-    "id": "h-compound",
-    "pattern": "\\?.+\\?",
-    "reason": "Two questions in one heading."
-   },
-   {
-    "id": "h-we-question",
-    "pattern": "^(Are|How are|Who are|Why do|What do|Can|Do) we\\b",
-    "reason": "The reader asks 'you', never 'we'."
-   },
-   {
-    "id": "h-search-string",
-    "pattern": "^(How to|Where to|What to)\\b|\\bnear me\\b",
     "flags": "i",
-    "reason": "A search string pasted as a heading."
+    "reason": "No colons in headings.",
+    "level": "fail",
+    "scope": "visible"
+   },
+   {
+    "id": "h-double",
+    "pattern": "\\?.+\\?",
+    "flags": "i",
+    "reason": "One question per heading.",
+    "level": "fail",
+    "scope": "visible"
+   },
+   {
+    "id": "h-keyword-string",
+    "pattern": "\\bnear me\\b|\\|",
+    "flags": "i",
+    "reason": "A search string pasted as a heading.",
+    "level": "fail",
+    "scope": "visible"
    }
   ],
-  "maxWords": 14,
-  "approvedLabels": [
-   "What's in it",
-   "Size",
-   "Delivery",
-   "Care",
-   "More questions",
-   "You might also like",
-   "Questions people ask",
-   "Questions families ask",
-   "Shop",
-   "Help",
-   "ChoZen",
-   "In this guide",
-   "Flowers for today",
-   "Flowers we can bring today",
-   "Hear about new flowers first",
-   "Gifts that last",
-   "Fresh flowers for today",
-   "Your basket",
-   "Search"
-  ]
+  "maxWords": 14
  },
- "ledeRules": {
+ "lede": {
+  "_about": "The first one or two sentences answer the page's question, warmly. Not clipped.",
   "maxSentences": 2,
-  "maxWords": 45,
-  "mustNotStartWithNumeral": "^\\d",
-  "brandMaxInLede": 1,
-  "exempt": [
-   "/",
-   "/cart",
-   "/search"
-  ]
- },
- "proseRules": [
-  {
-   "id": "p-colon-chain",
-   "pattern": ":[^.?!]*:",
-   "level": "warn",
-   "why": "Two colons in one sentence."
-  },
-  {
-   "id": "p-semicolon-chain",
-   "pattern": ";[^.?!]*;",
-   "level": "warn",
-   "why": "Two semicolons in one sentence."
-  },
-  {
-   "id": "p-starts-numeral",
-   "pattern": "^\\d+ (\\w+ )?(flowers|stems|roses|bouquets|crystals|of)\\b",
-   "level": "warn",
-   "why": "Spell out or reorder."
-  },
-  {
-   "id": "p-brand-subject",
-   "pattern": "ChoZen Boutique (offers|provides|is proud|prides|aims)",
-   "level": "fail",
-   "why": "Say 'we'."
-  }
- ],
- "emDashMax": 3,
- "repetition": {
-  "minWords": 6,
-  "maxPerPage": 2,
-  "_about": "An identical sentence of 6+ words may appear at most twice on a page (copy-voice rule 12)."
- },
- "areaSimilarity": {
-  "minWords": 6,
-  "_about": "No sentence of 6+ words may appear on two different area pages (copy-voice rule 'area pages are not doorway pages')."
+  "maxWords": 50,
+  "minAverageWordsPerSentence": 8
  }
 }

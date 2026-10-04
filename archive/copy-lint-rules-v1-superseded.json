@@ -1,0 +1,341 @@
+{
+ "_about": "Copy lint for ChoZen Boutique: the machine-checkable half of copy-voice.md. Ported from the Book London Nightclubs gate (generic families only) plus ChoZen's health-claims, overclaim, placeholder and dark-pattern rules. Read by _gate/checks/copy.mjs. level: fail (default) | warn | info.",
+ "scope": {
+  "visible": "text inside <main>, plus <title>, meta description and image alt",
+  "excludeSelectors": [
+   ".tbc",
+   ".sample",
+   "script",
+   "style",
+   ".ph",
+   "[data-gate-skip]"
+  ]
+ },
+ "exceptions": {
+  "strip": [
+   "Crystals are sold as decorative and spiritual items. Their traditional meanings are not scientifically proven and are not a substitute for medical advice or treatment.",
+   "Warning: children under 8 years can choke or suffocate on uninflated or broken balloons. Adult supervision is required. Keep uninflated balloons away from children. Discard broken balloons at once.",
+   "heat-treated",
+   "untreated"
+  ],
+  "pathRuleWhitelist": {
+   "/blogs/guides/flowers-and-pets": [
+    "health-claims:pain",
+    "health-claims:conditions",
+    "health-claims:medical"
+   ],
+   "/policies/privacy-policy": [
+    "health-claims:medical"
+   ],
+   "/policies/refund-policy": [
+    "health-claims:medical"
+   ],
+   "/blogs/guides/balloon-care": [
+    "health-claims:medical"
+   ]
+  }
+ },
+ "bannedPhrases": {
+  "sellingWordsAndAiTells": [
+   {
+    "id": "sell-core",
+    "match": "regex",
+    "pattern": "\\belevat(e|ed|es|ing)\\b|\\bunlock\\w*\\b|\\bultimate\\b|\\bcurated\\b|\\bnestled\\b|\\bvibrant\\b|\\bboasts?\\b|\\bseamless(ly)?\\b",
+    "flags": "i",
+    "reason": "Brand brief banned words and the classic AI set.",
+    "scope": "visible"
+   },
+   {
+    "id": "sell-phrases",
+    "match": "regex",
+    "pattern": "\\bwhether you['’]re\\b|\\blook no further\\b|\\bin the heart of\\b|\\bsomething for everyone\\b|\\bthe perfect (night|place|spot|way|venue|choice)\\b|\\bperfect for\\b|\\ba night to remember\\b|\\bnext level\\b|\\btake your night\\b|\\bthe place to be\\b|\\bsee and be seen\\b|\\bwe['’]ve got you covered\\b|\\brest assured\\b|\\btreat yourself\\b",
+    "flags": "i",
+    "reason": "Stock selling phrases.",
+    "scope": "visible"
+   },
+   {
+    "id": "sell-adjectives",
+    "match": "regex",
+    "pattern": "\\bunforgettable\\b|\\bworld-class\\b|\\bpremier\\b|\\bluxurious\\b|\\bindulge\\b|\\bimmers(e|ive)\\b|\\biconic\\b|\\bhidden gem\\b|\\bbespoke\\b|\\bstate-of-the-art\\b|\\btop-notch\\b|\\bsecond to none\\b|\\bhot ?spot\\b|\\brenowned\\b|\\blegendary\\b|\\bstunning\\b|\\bbreathtaking\\b|\\belectric atmosphere\\b|\\bbuzzing\\b|\\beffortless(ly)?\\b|\\bhassle-free\\b|\\bstress-free\\b|\\blavish\\b|\\bopulent\\b|\\bsophisticated\\b|\\bdiscerning\\b|\\belite\\b|\\bA-list\\b|\\bstar-studded\\b|\\bred[- ]carpet\\b|\\bmust-(visit|see)\\b|\\bglamorous\\b",
+    "flags": "i",
+    "reason": "Adjectives instead of specifics. Give the night, the price, the street.",
+    "scope": "visible"
+   },
+   {
+    "id": "ai-tells",
+    "match": "regex",
+    "pattern": "\\bdelve\\b|\\bdive into\\b|\\bembark\\b|\\btapestry\\b|\\btestament to\\b|\\bit['’]s worth noting\\b|\\bin conclusion\\b|\\bnavigat(e|ing) the\\b|\\bgame-changer\\b|\\bwhen it comes to\\b|\\bnot only\\b[^.]{0,60}\\bbut also\\b",
+    "flags": "i",
+    "reason": "Machine-writing tells.",
+    "scope": "visible"
+   },
+   {
+    "id": "sell-florist",
+    "match": "regex",
+    "pattern": "\\bgorgeous\\b|\\bexquisite\\b|\\btimeless\\b|\\bthe perfect gift\\b|\\bluxury\\b|\\bpremium\\b|\\belevate\\b|\\bwow\\b|\\bbest florist\\b|\\baward[- ]winning\\b",
+    "flags": "i",
+    "reason": "Florist hype. Say what's in it, the size and the price.",
+    "scope": "visible"
+   }
+  ],
+  "processNarration": [
+   {
+    "id": "pn-this-page",
+    "match": "regex",
+    "pattern": "\\bthis page (covers|lists|shows|explains)\\b|\\b(is|are) (listed|shown) (above|below)\\b",
+    "flags": "i",
+    "reason": "Page narration.",
+    "scope": "visible"
+   },
+   {
+    "id": "pn-welcome",
+    "match": "regex",
+    "pattern": "\\bwelcome to (our|the) (website|site|shop|store)\\b|\\bbelow you['’]ll find\\b|\\bscroll (down|below)\\b|\\bbrowse our\\b|\\bclick here\\b",
+    "flags": "i",
+    "reason": "The page describing itself.",
+    "scope": "visible"
+   }
+  ],
+  "researchNotes": [
+   {
+    "id": "rn-notes",
+    "match": "regex",
+    "pattern": "\\(unverified\\)|\\(secondary\\)|\\bunverified\\b|\\baccording to (wikipedia|our research)\\b|\\bas of \\d{1,2} \\w+ 20\\d\\d\\b|\\[Solicitor\\]|\\[TS\\]",
+    "flags": "i",
+    "reason": "Research notes don't go in visible text.",
+    "scope": "visible"
+   }
+  ],
+  "usTerms": [
+   {
+    "id": "us-spelling",
+    "match": "regex",
+    "pattern": "\\b(color|colors|center|favorite|jewelry|personalized|organize|realize|cozy|fulfill|gray|mom|zip code|cell ?phone)\\b",
+    "flags": "",
+    "reason": "UK English: colour, jewellery, personalised, mum, postcode, mobile.",
+    "scope": "visible",
+    "caseSensitive": true
+   },
+   {
+    "id": "us-terms",
+    "match": "regex",
+    "pattern": "\\b(shopping cart|add to cart|your cart|mail(ed)? to you|vacation)\\b",
+    "flags": "i",
+    "reason": "UK words: basket, post.",
+    "scope": "visible"
+   }
+  ],
+  "overclaims": [
+   {
+    "id": "oc-forever",
+    "match": "regex",
+    "pattern": "\\blasts? forever\\b|\\bnever (wilts?|fades?|dies)\\b|\\balways fresh\\b|\\b100% (fresh|satisfaction)\\b|\\bguaranteed\\b",
+    "flags": "i",
+    "reason": "Promises we can't keep (CAP 3.7).",
+    "scope": "visible"
+   }
+  ],
+  "darkPatterns": [
+   {
+    "id": "dp-scarcity",
+    "match": "regex",
+    "pattern": "\\bonly \\d+ left\\b|\\bselling fast\\b|\\bhurry\\b|\\blast chance\\b|\\bdon['’]t miss out\\b",
+    "flags": "i",
+    "reason": "Fake urgency or scarcity (DMCC Act, CAP 3).",
+    "scope": "visible"
+   }
+  ],
+  "contact": [
+   {
+    "id": "ct-hotmail",
+    "match": "regex",
+    "pattern": "hotmail\\.(com|co\\.uk)",
+    "flags": "i",
+    "reason": "The domain email replaces hotmail everywhere public (fixes.md #10).",
+    "scope": "html",
+    "level": "warn"
+   }
+  ]
+ },
+ "healthClaims": {
+  "_about": "BLOCK list from compliance/crystals.md §3. Runs on every page: visible text, title, meta, alt text and JSON-LD.",
+  "patterns": [
+   "\\bheal(s|ed|ing|er|ers)?\\b",
+   "\\bcur(e|es|ed|ing)\\b",
+   "\\brelie(f|fs|ve|ves|ved|ving)\\b",
+   "\\bremed(y|ies|ial)\\b",
+   "\\btherap(y|ies|ist|eutic|eutically)\\b",
+   "\\bdetox\\w*",
+   "\\bimmun\\w*",
+   "\\banxi(ety|eties|ous)\\b",
+   "\\bpanic\\b",
+   "\\bdepress(ion|ed|ive)\\b",
+   "\\bstress[- ]?(relie\\w*|free|buster|less)\\b",
+   "\\b(reduc|eas|lower|melt)\\w*\\s+(your\\s+)?stress\\b",
+   "\\binsomnia\\b",
+   "\\bsleep\\s+aid\\b",
+   "\\bhelps?\\s+(you\\s+)?(to\\s+)?sleep\\b",
+   "\\b(better|deeper|restful)\\s+sleep\\b",
+   "\\bfor\\s+sleep\\b",
+   "\\bpain(s|ful|kill\\w*)?\\b",
+   "\\bach(e|es|ing)\\b",
+   "\\bheadaches?\\b",
+   "\\bmigraines?\\b",
+   "\\bfertil(e|ity)\\b",
+   "\\bconcei(ve|ving|ption)\\b",
+   "\\bhormon\\w*",
+   "\\bmenopaus\\w*",
+   "\\bmeno\\b",
+   "\\bmenstrua\\w*",
+   "\\bperiod\\s+pain\\b",
+   "\\blibido\\b",
+   "\\bblood\\s+pressure\\b",
+   "\\bcirculation\\b",
+   "\\bheart\\s+(health|condition\\w*|disease)\\b",
+   "\\bEMF\\b",
+   "\\banti-?radiation\\b",
+   "\\bradiation\\s+(protect\\w*|shield\\w*|block\\w*)",
+   "\\b(absorb|block|shield|neutrali[sz])\\w*\\s+(\\w+\\s+)?radiation\\b",
+   "\\b5G\\s+protect\\w*",
+   "\\bwi-?fi\\s+(protect\\w*|shield\\w*)",
+   "\\bchakra\\s+(heal\\w*|balanc\\w*|align\\w*|clear\\w*|open\\w*|unblock\\w*|activat\\w*)",
+   "\\b(balanc|align|open|unblock|clear|activat)\\w*\\s+(your\\s+|the\\s+|all\\s+)?(\\w+\\s+)?chakras?\\b",
+   "\\benergy\\s+(heal\\w*|work\\s+heal\\w*)",
+   "\\b(absorb|neutrali[sz]|remov|block|repel|purif|transmut)\\w*\\s+(all\\s+)?(negative\\s+|bad\\s+|harmful\\s+)?energ\\w*",
+   "\\braises?\\s+(your\\s+)?vibration\\w*",
+   "\\bhigh[- ]vibration(al)?\\b",
+   "\\bfrequency\\s+(heal\\w*|align\\w*)",
+   "\\bprotects?\\s+(you|your|the\\s+wearer|against|from|children|babies|pets)\\b",
+   "\\bprotection\\s+(from|against)\\b",
+   "\\bshields?\\s+(you|your)\\b",
+   "\\bwards?\\s+off\\b",
+   "\\battract(s|ing)?\\s+(more\\s+)?(money|wealth|love|luck|abundance|success|prosperity|a\\s+partner|good\\s+fortune)",
+   "\\bbring(s|ing)?\\s+(you\\s+)?(money|wealth|love|luck|abundance|success|prosperity)",
+   "\\bwill\\s+(bring|attract|protect|change|transform|heal)\\b",
+   "\\bguarantee\\w*",
+   "\\bmedical(ly)?\\b",
+   "\\bclinical(ly)?\\b",
+   "\\bscientifically\\b",
+   "\\bproven\\b",
+   "\\bdoctors?\\b",
+   "\\bmedicine\\b",
+   "\\bprescri\\w*",
+   "\\b(asthma|arthritis|diabetes|alzheimer'?s|dementia|adhd|autism|eczema|psoriasis|inflammation|infection|illness|disease|addiction|ptsd|trauma|thyroid|digestion|metabolism|eyesight)\\b",
+   "\\bgrief\\s+recovery\\b",
+   "\\bcalm(s|ing)?\\s+(the\\s+|your\\s+)?(mind|nerves|nervous|you|emotions)\\b",
+   "\\bsooth(e|es|ing)\\s+(the\\s+|your\\s+)?(mind|nerves|soul|emotions)\\b",
+   "\\b(reduc|eas|lower)\\w*\\s+(anger|tension|fear|worry|overthinking)\\b",
+   "\\banti-?(ageing|aging|wrinkle|inflammatory)\\b",
+   "\\bwrinkles?\\b",
+   "\\bpuffiness\\b",
+   "\\blymphatic\\b",
+   "\\bcollagen\\b",
+   "\\bbad\\s+luck\\b",
+   "\\bcurse[sd]?\\b",
+   "\\bevil\\s+eye\\b",
+   "\\bnegative\\s+entit\\w*",
+   "\\b(gem|crystal)\\s+(elixir|water)\\b",
+   "\\belixirs?\\b"
+  ],
+  "flags": "i"
+ },
+ "placeholders": {
+  "_about": "Unconfirmed facts. Warn in preview mode, FAIL in launch mode (npm run gate -- --launch).",
+  "pattern": "\\[(to confirm|PRICE|FEE|ADDRESS|HOURS|LEGAL NAME|EN POSTCODE|ICO NUMBER|TRADING NAME|her words to come|her notes to come|weeks ahead|x|[A-Z][A-Z ]{2,})[^\\]]*\\]|\\bSample\\b(?=[: ])|£—",
+  "flags": ""
+ },
+ "headingRules": {
+  "fail": [
+   {
+    "id": "h-colon",
+    "pattern": ":",
+    "reason": "No colons in headings."
+   },
+   {
+    "id": "h-compound",
+    "pattern": "\\?.+\\?",
+    "reason": "Two questions in one heading."
+   },
+   {
+    "id": "h-we-question",
+    "pattern": "^(Are|How are|Who are|Why do|What do|Can|Do) we\\b",
+    "reason": "The reader asks 'you', never 'we'."
+   },
+   {
+    "id": "h-search-string",
+    "pattern": "^(How to|Where to|What to)\\b|\\bnear me\\b",
+    "flags": "i",
+    "reason": "A search string pasted as a heading."
+   }
+  ],
+  "maxWords": 14,
+  "approvedLabels": [
+   "What's in it",
+   "Size",
+   "Delivery",
+   "Care",
+   "More questions",
+   "You might also like",
+   "Questions people ask",
+   "Questions families ask",
+   "Shop",
+   "Help",
+   "ChoZen",
+   "In this guide",
+   "Flowers for today",
+   "Flowers we can bring today",
+   "Hear about new flowers first",
+   "Gifts that last",
+   "Fresh flowers for today",
+   "Your basket",
+   "Search"
+  ]
+ },
+ "ledeRules": {
+  "maxSentences": 2,
+  "maxWords": 45,
+  "mustNotStartWithNumeral": "^\\d",
+  "brandMaxInLede": 1,
+  "exempt": [
+   "/",
+   "/cart",
+   "/search"
+  ]
+ },
+ "proseRules": [
+  {
+   "id": "p-colon-chain",
+   "pattern": ":[^.?!]*:",
+   "level": "warn",
+   "why": "Two colons in one sentence."
+  },
+  {
+   "id": "p-semicolon-chain",
+   "pattern": ";[^.?!]*;",
+   "level": "warn",
+   "why": "Two semicolons in one sentence."
+  },
+  {
+   "id": "p-starts-numeral",
+   "pattern": "^\\d+ (\\w+ )?(flowers|stems|roses|bouquets|crystals|of)\\b",
+   "level": "warn",
+   "why": "Spell out or reorder."
+  },
+  {
+   "id": "p-brand-subject",
+   "pattern": "ChoZen Boutique (offers|provides|is proud|prides|aims)",
+   "level": "fail",
+   "why": "Say 'we'."
+  }
+ ],
+ "emDashMax": 3,
+ "repetition": {
+  "minWords": 6,
+  "maxPerPage": 2,
+  "_about": "An identical sentence of 6+ words may appear at most twice on a page (copy-voice rule 12)."
+ },
+ "areaSimilarity": {
+  "minWords": 6,
+  "_about": "No sentence of 6+ words may appear on two different area pages (copy-voice rule 'area pages are not doorway pages')."
+ }
+}
