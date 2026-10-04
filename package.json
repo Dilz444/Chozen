@@ -8,7 +8,8 @@
     "preview": "node tools/preview/server.mjs",
     "export": "node tools/preview/export.mjs",
     "gate": "node _gate/run.mjs",
-    "theme-check": "theme-check theme"
+    "theme-check": "shopify theme check --path theme",
+    "import": "node tools/import/push.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",

@@ -90,7 +90,8 @@ theme/
     card-message (line item property), warnings (lilies, latex, foil, crystal disclaimer, hallmark)
   templates/
     index.json, collection.json, collection.occasion.json, collection.sympathy.json,
-    product.json (keepsakes, UK shipping), product.fresh.json (local same-day), product.balloon.json,
+    product.json (every product: the section switches between same-day and UK-shipping behaviour from the
+    `local-only` tag, and never shows express checkout on same-day products), product.fresh.json, product.balloon.json (optional),
     page.json, page.about.json, page.contact.json, page.delivery.json, page.area.json, page.hire.json, page.faq.json,
     blog.json, blog.guides.json, article.json, article.guide.json,
     cart.json, search.json, 404.json, list-collections.json, password.json, gift_card.liquid
@@ -106,9 +107,8 @@ theme/
 compliance-linted), `custom.colour` (for filters), `custom.formation`. Product tag `local-only` on every fresh and
 balloon product.
 
-**Performance rules:** one CSS file per section, critical CSS inline in `theme.liquid` for the header and hero, no
-render-blocking JS, `image_url` + `image_tag` with widths 180–1600 and `sizes`, `loading="lazy"` below the fold,
-`fetchpriority="high"` on the hero only, fonts from Shopify's CDN with `font-display: swap` and two weights each.
+**Performance rules:** one small stylesheet (`base.css`, ~31 kB unminified) plus `tokens.css`; no render-blocking JS, `image_url` + `image_tag` with widths 180–1600 and `sizes`, `loading="lazy"` below the fold,
+`fetchpriority="high"` on the hero only, self-hosted fonts with `font-display: swap`, two weights each, the two main files preloaded. Measured on the local preview: Lighthouse mobile 98–99 / 100 / 100 / 100 on home, collection, product, area page and guide (`_gate/out/lighthouse.json`). Shopify's own scripts will cost a few points; re-measure with `npm run gate -- --base <theme preview URL>`.
 Apps load only on templates that use them (app blocks, not global embeds, where the app allows).
 
 ## 4. Same-day delivery: how it works

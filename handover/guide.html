@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Your shop: the five things you'll do most</title>
+<style>
+  @font-face { font-family: "Cormorant Garamond"; font-weight: 500; src: url(../mockup/fonts/cormorant-garamond-latin-500-normal.woff2) format("woff2"); }
+  @font-face { font-family: "Cormorant Garamond"; font-weight: 500; font-style: italic; src: url(../mockup/fonts/cormorant-garamond-latin-500-italic.woff2) format("woff2"); }
+  @font-face { font-family: "Jost"; font-weight: 400; src: url(../mockup/fonts/jost-latin-400-normal.woff2) format("woff2"); }
+  @font-face { font-family: "Jost"; font-weight: 500; src: url(../mockup/fonts/jost-latin-500-normal.woff2) format("woff2"); }
+  @page { size: A4; margin: 0; }
+  :root { --paper: #FBF8F4; --paper-2: #F4ECE4; --ink: #2A2225; --ink-2: #62565A; --rose: #94495D; --sage: #5D6B53; --line: #E6DCD3; --gold: #B39368; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 400 9.6pt/1.36 Jost, sans-serif; }
+  .page { width: 210mm; height: 297mm; overflow: hidden; padding: 11mm 13mm 9mm; page-break-after: always; position: relative; }
+  .page:last-child { page-break-after: auto; }
+  header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 12px; }
+  .eyebrow { font: 500 8pt Jost; letter-spacing: .16em; text-transform: uppercase; color: var(--rose); }
+  h1 { font: 500 25pt/1 "Cormorant Garamond", serif; margin: 4px 0 0; }
+  h1 em { color: var(--rose); }
+  header p { max-width: 70mm; text-align: right; font: italic 500 12pt/1.25 "Cormorant Garamond", serif; color: var(--ink-2); margin: 0; }
+  .box { background: #fff; border: 1px solid var(--line); padding: 8px 12px 9px; margin-bottom: 8px; break-inside: avoid; }
+  h2 { font: 500 16pt/1.1 "Cormorant Garamond", serif; margin: 0 0 6px; display: flex; gap: 8px; align-items: baseline; }
+  h2 .n { font: 500 9pt Jost; color: var(--rose); }
+  ol { margin: 0; padding-left: 18px; }
+  li { margin: 2px 0; }
+  li::marker { color: var(--rose); font-weight: 500; }
+  b { font-weight: 500; }
+  .path { font-weight: 500; color: var(--ink); background: var(--paper-2); padding: 0 4px; border-radius: 2px; white-space: nowrap; }
+  .tip { margin: 6px 0 0; font-size: 9.4pt; color: var(--ink-2); }
+  .tip b { color: var(--sage); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .shot { border: 1px dashed var(--ink-2); color: var(--ink-2); font-size: 8.3pt; text-transform: uppercase; letter-spacing: .08em; display: grid; place-items: center; text-align: center; height: 11mm; margin-top: 6px; padding: 6px; background: var(--paper); }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 7px; }
+  .pair figure { margin: 0; }
+  .pair img { width: 100%; height: auto; border: 1px solid var(--line); display: block; }
+  figcaption { font-size: 8.4pt; color: var(--ink-2); margin-top: 3px; }
+  .help { background: var(--paper-2); padding: 9px 13px; font-size: 9.6pt; }
+  footer { position: absolute; left: 14mm; right: 14mm; bottom: 8mm; display: flex; justify-content: space-between; font-size: 8pt; color: var(--ink-2); border-top: 1px solid var(--line); padding-top: 5px; }
+</style>
+</head>
+<body>
+<section class="page">
+  <header>
+    <div>
+      <div class="eyebrow">ChoZen Boutique · your shop</div>
+      <h1>The five things <em>you'll do most</em></h1>
+    </div>
+    <p>Everything here works from the Shopify app on your phone. Nothing you do here can break the website.</p>
+  </header>
+
+  <div class="grid">
+    <div class="box">
+      <h2><span class="n">1</span> Add a new product</h2>
+      <ol>
+        <li>Open the <b>Shopify</b> app, tap <span class="path">Products</span>.</li>
+        <li>Find one that's most like the new one and tap it. Tap <span class="path">⋯</span> then <span class="path">Duplicate</span>. (It copies the delivery settings for you.)</li>
+        <li>Change the <b>name</b>, the <b>description</b> and the <b>price</b>.</li>
+        <li>Under <b>Media</b>, delete the old photos and add yours. Put the <b>square main photo first</b>.</li>
+        <li>Set <b>Status</b> to <b>Active</b> and tap <span class="path">Save</span>.</li>
+      </ol>
+      <p class="tip"><b>Tip:</b> not sure about the words? Send Dilz your notes and he'll write it up for you.</p>
+      <div class="shot">Dilz adds a screenshot of your Products screen on setup day</div>
+    </div>
+
+    <div class="box">
+      <h2><span class="n">2</span> Change a price</h2>
+      <ol>
+        <li><span class="path">Products</span> → tap the product.</li>
+        <li>Scroll to <b>Price</b> and type the new price. If it has sizes (Standard, Large), tap each size under <b>Variants</b> and change each one.</li>
+        <li>Tap <span class="path">Save</span>. The website updates straight away.</li>
+      </ol>
+      <p class="tip"><b>Tip:</b> "Compare-at price" is only for a genuine sale. Leave it empty otherwise.</p>
+      <div class="shot">Dilz adds a screenshot of the price box on setup day</div>
+    </div>
+
+    <div class="box">
+      <h2><span class="n">3</span> Mark an order as done</h2>
+      <ol>
+        <li><span class="path">Orders</span> → tap the order. The <b>delivery date</b> and <b>card message</b> are on it.</li>
+        <li><b>Flowers you deliver:</b> tap <span class="path">Mark as out for delivery</span> when you leave, then <span class="path">Mark as delivered</span>.</li>
+        <li><b>Parcels you post:</b> tap <span class="path">Fulfil items</span>, add the Royal Mail tracking number, tap <span class="path">Fulfil</span>.</li>
+      </ol>
+      <p class="tip"><b>Tip:</b> the customer gets an email at each step. You don't need to message them.</p>
+      <div class="shot">Dilz adds a screenshot of an order on setup day</div>
+    </div>
+
+    <div class="box">
+      <h2><span class="n">4</span> Pause same-day delivery</h2>
+      <ol>
+        <li><span class="path">Online Store</span> → <span class="path">Themes</span> → <span class="path">Customise</span>.</li>
+        <li>Tap the <b>settings</b> icon → <span class="path">Same-day delivery</span>.</li>
+        <li>Tick <b>Pause same-day delivery</b> and write your message, e.g. "Back on Tuesday". <span class="path">Save</span>.</li>
+        <li>In the <b>delivery app</b>, block the same days so nobody can pick them.</li>
+        <li>To switch it back on: untick, <span class="path">Save</span>.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="box">
+    <h2><span class="n">4</span> What customers see</h2>
+    <div class="pair">
+      <figure><img src="img/product-normal.png" alt=""><figcaption>Normal: a live countdown to your cut-off.</figcaption></figure>
+      <figure><img src="img/product-paused.png" alt=""><figcaption>Paused: your message instead. They can still order for later.</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="box">
+    <h2><span class="n">5</span> Reply to a review</h2>
+    <div class="grid" style="gap: 14px">
+      <ol>
+        <li><b>On your website:</b> <span class="path">Apps</span> → <span class="path">Judge.me</span> → <span class="path">Reviews</span>. Tap the review, tap <span class="path">Reply</span>, write, <span class="path">Publish</span>.</li>
+        <li><b>On Google:</b> open <b>Google Maps</b> → your profile → <span class="path">Reviews</span> → <span class="path">Reply</span>.</li>
+      </ol>
+      <p class="tip" style="margin: 0"><b>Good replies are short.</b> Thank them by name and mention what they sent ("so glad the peonies made it for her birthday"). If someone's unhappy, say sorry and ask them to call you. Never offer anything in return for a review or for changing one. Google doesn't allow it, and UK review rules are strict.</p>
+    </div>
+  </div>
+
+  <div class="help"><b>Stuck?</b> Call or message Dilz. Nothing on this page can break the website, and anything can be undone.</div>
+</section>
+</body>
+</html>

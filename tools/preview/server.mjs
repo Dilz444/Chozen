@@ -10,6 +10,8 @@ const args = process.argv.slice(2);
 const port = Number(args[args.indexOf('--port') + 1]) || 4380;
 const host = args.includes('--host') ? args[args.indexOf('--host') + 1] : '127.0.0.1';
 const launch = args.includes('--launch'); // render as launch mode: no placeholder marks
+// --set key=value (repeatable) overrides a theme setting, e.g. --set same_day_paused=true
+const overrides = Object.fromEntries(args.flatMap((a, i) => (a === '--set' ? [args[i + 1].split('=')] : [])).map(([k, v]) => [k, v === 'true' ? true : v === 'false' ? false : v]));
 const types = { '.css': 'text/css', '.js': 'text/javascript', '.woff2': 'font/woff2', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.txt': 'text/plain', '.xml': 'application/xml' };
 
 http.createServer(async (req, res) => {
@@ -22,11 +24,11 @@ http.createServer(async (req, res) => {
       return fs.createReadStream(f).pipe(res);
     }
     if (u.pathname === '/robots.txt' || u.pathname === '/llms.txt') {
-      const f = path.join(ROOT, 'theme', 'static', u.pathname.slice(1));
+      const f = path.join(ROOT, 'seo', u.pathname.slice(1));
       res.writeHead(fs.existsSync(f) ? 200 : 404, { 'content-type': 'text/plain' });
       return res.end(fs.existsSync(f) ? fs.readFileSync(f) : '');
     }
-    const r = createRenderer(launch ? { settings: { show_placeholder_marks: false } } : {}); // fresh each request: edits show on reload
+    const r = createRenderer({ settings: { ...(launch ? { show_placeholder_marks: false } : {}), ...overrides } }); // fresh each request: edits show on reload
     const out = await r.render(u.pathname + u.search);
     res.writeHead(out.status, { 'content-type': 'text/html; charset=utf-8' });
     res.end(out.html);

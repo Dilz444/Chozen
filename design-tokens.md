@@ -49,7 +49,7 @@
 | Small / labels | Jost | 13px, letter-spacing .08em, uppercase | 500 | eyebrow labels, chips |
 | Price | Jost | 16px tabular-nums | 500 | |
 
-Both families are in Shopify's font library (`cormorant_n5`, `jost_n4`), so the theme serves them from Shopify's CDN with `font-display: swap` and no third-party request.
+Both families are open-licence (OFL) and **self-hosted as theme assets** (`theme/assets/*.woff2`, two weights each, `font-display: swap`, the two main files preloaded). That avoids depending on exact Shopify font-library handles and adds no third-party request.
 
 ### Space, shape, motion
 
@@ -77,6 +77,6 @@ Nothing glossy, nothing neon, no glitter.
 1. Open `capture/pages/home/tokens-desktop.json`. Take the top background, text and accent colours and the H1/body fonts.
 2. Apply the rules in the first table (contrast fixes keep her hue).
 3. Edit the `:root` block in `theme/assets/tokens.css` (and `mockup/tokens.css`). Nothing else references raw hex values; the gate fails the build if any other file does (`_gate/checks/tokens.mjs`).
-4. If her display font isn't in Shopify's library, pick the nearest there and note it here.
+4. If her fonts differ, drop their woff2 files (OFL or licensed for web) into `theme/assets/`, update `theme/snippets/fonts.liquid` and `--font-display`/`--font-body` in `tokens.css`, and note it here.
 5. Re-run `npm run gate`. The contrast check recomputes every pairing above and fails anything under AA.
 6. Re-shoot the mockup screenshots: `node mockup/shoot.mjs`.
