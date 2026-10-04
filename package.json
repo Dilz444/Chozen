@@ -1,0 +1,22 @@
+{
+  "name": "chozen-boutique",
+  "private": true,
+  "type": "module",
+  "description": "ChoZen Boutique: Wix capture, Shopify theme, local preview and quality gate",
+  "scripts": {
+    "capture": "node tools/capture/capture.mjs",
+    "preview": "node tools/preview/server.mjs",
+    "export": "node tools/preview/export.mjs",
+    "gate": "node _gate/run.mjs",
+    "theme-check": "theme-check theme"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1",
+    "@shopify/theme-check-node": "3.30.1",
+    "liquidjs": "10.30.0",
+    "lighthouse": "13.5.0",
+    "chrome-launcher": "^1.2.0",
+    "fast-xml-parser": "^5.0.0",
+    "linkedom": "^0.18.0"
+  }
+}
