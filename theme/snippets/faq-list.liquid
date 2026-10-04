@@ -1,14 +1,16 @@
 {%- comment -%}
   Visible questions and the FAQPage JSON-LD built from the same list, so the two can't drift apart.
-  faqs: an array of { "q": "...", "a": "..." } (a metafield of type json, custom.faq). heading: optional.
+  faqs: an array of { "q": "...", "a": "..." } (custom.faq json metafield value), or section blocks with question/answer settings. heading: optional.
 {%- endcomment -%}
 {%- if faqs != blank and faqs.size > 0 -%}
 <section class="faq" aria-labelledby="faq-{{ id | default: 'list' }}">
   <h2 id="faq-{{ id | default: 'list' }}">{{ heading | default: 'Questions people ask' }}</h2>
   {%- for f in faqs -%}
+    {%- assign q = f.q | default: f.settings.question -%}
+    {%- assign a = f.a | default: f.settings.answer -%}
     <details{% if forloop.first and open_first %} open{% endif %}>
-      <summary>{{ f.q }}</summary>
-      <p>{% render 'tbc', text: f.a %}</p>
+      <summary>{{ q }}</summary>
+      <p>{% render 'tbc', text: a %}</p>
     </details>
   {%- endfor -%}
 </section>
@@ -18,7 +20,9 @@
     "@type": "FAQPage",
     "mainEntity": [
       {%- for f in faqs -%}
-        { "@type": "Question", "name": {{ f.q | json }}, "acceptedAnswer": { "@type": "Answer", "text": {{ f.a | remove: ' [to confirm]' | json }} } }{% unless forloop.last %},{% endunless %}
+        {%- assign q = f.q | default: f.settings.question -%}
+        {%- assign a = f.a | default: f.settings.answer -%}
+        { "@type": "Question", "name": {{ q | json }}, "acceptedAnswer": { "@type": "Answer", "text": {{ a | remove: ' [to confirm]' | json }} } }{% unless forloop.last %},{% endunless %}
       {%- endfor -%}
     ]
   }

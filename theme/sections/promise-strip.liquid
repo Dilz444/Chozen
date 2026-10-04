@@ -1,0 +1,32 @@
+<ul class="promise" aria-label="{{ section.settings.label | escape }}">
+  {%- for block in section.blocks -%}
+    <li {{ block.shopify_attributes }}>
+      <svg aria-hidden="true" focusable="false"><use href="#i-{{ block.settings.icon }}"/></svg>
+      {%- if block.settings.cutoff -%}
+        {% render 'cutoff', style: 'strip' %}
+      {%- else -%}
+        <span><strong>{{ block.settings.strong }}</strong> {{ block.settings.text }}</span>
+      {%- endif -%}
+    </li>
+  {%- endfor -%}
+</ul>
+{% schema %}
+{
+  "name": "Promise strip",
+  "max_blocks": 4,
+  "settings": [{ "type": "text", "id": "label", "label": "Label for screen readers", "default": "How delivery works" }],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Promise",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "options": [{ "value": "clock", "label": "Clock" }, { "value": "van", "label": "Van" }, { "value": "card", "label": "Card" }, { "value": "uk", "label": "Parcel" }], "default": "van" },
+        { "type": "checkbox", "id": "cutoff", "label": "Show the live cut-off instead of text", "default": false },
+        { "type": "text", "id": "strong", "label": "Bold words", "default": "Hand-delivered" },
+        { "type": "text", "id": "text", "label": "Rest of the line", "default": ", never posted" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Promise strip", "blocks": [{ "type": "item" }] }]
+}
+{% endschema %}

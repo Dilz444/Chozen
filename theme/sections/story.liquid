@@ -1,0 +1,33 @@
+<section class="story" id="story" aria-labelledby="st-{{ section.id }}">
+  <div class="story__in wrap">
+    <div class="story__media{% if section.settings.image == blank %} ph{% endif %}"{% if section.settings.image == blank %} data-label="{{ 'general.photo_to_come' | t }}: Beyzan with her flowers"{% endif %}>
+      {%- if section.settings.image != blank -%}
+        {% render 'image', image: section.settings.image, sizes: '(min-width: 48em) 40vw, 100vw' %}
+      {%- else -%}
+        <svg viewBox="0 0 400 400" aria-hidden="true" focusable="false"><use href="#s-portrait"/></svg>
+      {%- endif -%}
+    </div>
+    <div class="story__text">
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2 id="st-{{ section.id }}">{{ section.settings.heading }}</h2>
+      <p class="story__quote">{{ section.settings.quote }}</p>
+      <p class="story__sig">{% render 'tbc', text: section.settings.signature %}</p>
+      <a class="link-arrow" href="{{ section.settings.link | default: '/pages/about' }}">{{ section.settings.link_label }} <svg aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Florist story",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Portrait" },
+    { "type": "text", "id": "eyebrow", "label": "Small line", "default": "The florist" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Who makes up your flowers?" },
+    { "type": "textarea", "id": "quote", "label": "In her words", "default": "My love of flowers started with jasmine crowns in Cyprus. ChoZen is that same feeling, made up by hand in Enfield and brought to your door." },
+    { "type": "text", "id": "signature", "label": "Signature", "default": "Beyzan, founder [her words to come]" },
+    { "type": "url", "id": "link", "label": "Link" },
+    { "type": "text", "id": "link_label", "label": "Link text", "default": "Read Beyzan's story" }
+  ],
+  "presets": [{ "name": "Florist story" }]
+}
+{% endschema %}

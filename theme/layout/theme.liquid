@@ -25,8 +25,8 @@
     <meta name="description" content="{{ page_description | escape }}">
   {%- endif -%}
   {%- render 'meta-tags' -%}
-  <link rel="preload" href="{{ 'cormorant-garamond-latin-500-normal.woff2' | asset_url }}" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="{{ 'jost-latin-400-normal.woff2' | asset_url }}" as="font" type="font/woff2" crossorigin>
+  {{ 'cormorant-garamond-latin-500-normal.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+  {{ 'jost-latin-400-normal.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
   {%- render 'fonts' -%}
   {{ 'tokens.css' | asset_url | stylesheet_tag }}
   {{ 'base.css' | asset_url | stylesheet_tag }}

@@ -1,0 +1,31 @@
+{%- assign coll = section.settings.collection -%}
+<section class="sec sec--tight" aria-labelledby="rail-{{ section.id }}">
+  <div class="wrap">
+    <div class="sec__head">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}<p class="eyebrow eyebrow--sage">{{ section.settings.eyebrow }}</p>{%- endif -%}
+        <h2 id="rail-{{ section.id }}">{{ section.settings.heading }}</h2>
+      </div>
+      {%- if coll != blank -%}<a class="link-arrow" href="{{ coll.url }}">{{ 'general.see_all' | t }} <svg aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>{%- endif -%}
+    </div>
+    <ul class="grid">
+      {%- for product in coll.products limit: section.settings.count -%}
+        {% render 'product-card', product: product, forloop: forloop %}
+      {%- else -%}
+        <li class="empty">{{ 'collections.empty' | t }}</li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Product row",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Small line", "default": "Same-day · Enfield & North London" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Fresh flowers for today" },
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "range", "id": "count", "label": "Products", "min": 2, "max": 12, "step": 2, "default": 4 }
+  ],
+  "presets": [{ "name": "Product row" }]
+}
+{% endschema %}

@@ -3,7 +3,7 @@ url: /blogs/guides/clear-quartz-meaning
 type: article
 template: article.guide
 title: Clear Quartz Meaning, Colour and Care | ChoZen Boutique
-meta: Clear quartz, or rock crystal, is the alternative April birthstone in the UK and the "master crystal" of crystal lore. What it is, where it's from, how to care for it.
+meta: Clear quartz, or rock crystal, is the UK's alternative April birthstone and the master crystal of crystal lore. Where it's from and how to care for it.
 h1: What does clear quartz mean?
 lede: >-
   Clear quartz, also called rock crystal, is colourless quartz that grows in six-sided points. Crystal lore calls it

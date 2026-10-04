@@ -3,7 +3,7 @@ url: /blogs/guides/black-tourmaline-meaning
 type: article
 template: article.guide
 title: Black Tourmaline Meaning and Care | ChoZen Boutique
-meta: Black tourmaline, or schorl, is traditionally regarded as a protective, grounding stone. What it looks like, where it's mined, who to give it to and how to care for it.
+meta: Black tourmaline, or schorl, is traditionally regarded as a protective, grounding stone. What it looks like, where it's mined and how to care for it.
 h1: What does black tourmaline mean?
 lede: >-
   Black tourmaline, known to geologists as schorl, is a glossy black crystal with ridges along its length. In

@@ -63,7 +63,7 @@ A gift that travels well by post and keeps. Fresh flowers sent a long way can ar
 is a reminder of you for weeks or years. Some ideas:
 
 - **Faux flowers,** which keep their shape and colour for years with a dust now and then. See our [faux flowers](/collections/faux-flowers).
-- **A crystal or a piece of gemstone jewellery,** posted UK-wide. Browse our [crystals](/collections/crystals) and other [gifts that last](/collections/gifts-that-last).
+- **A crystal or a piece of gemstone jewellery,** posted UK-wide. See our [crystals](/collections/crystals) and other [gifts that last](/collections/gifts-that-last).
 - **A handwritten letter in the parcel,** which costs nothing and is often what she keeps longest.
 
 ## What else goes well with flowers?

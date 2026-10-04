@@ -31,7 +31,9 @@
 \bcirculation\b
 \bheart\s+(health|condition\w*|disease)\b
 \bEMF\b
-\bradiation\b
+\banti-?radiation\b
+\bradiation\s+(protect\w*|shield\w*|block\w*)
+\b(absorb|block|shield|neutrali[sz])\w*\s+(\w+\s+)?radiation\b
 \b5G\s+protect\w*
 \bwi-?fi\s+(protect\w*|shield\w*)
 \bchakra\s+(heal\w*|balanc\w*|align\w*|clear\w*|open\w*|unblock\w*|activat\w*)
@@ -56,7 +58,7 @@
 \bdoctors?\b
 \bmedicine\b
 \bprescri\w*
-\b(asthma|arthritis|cancer|diabetes|alzheimer'?s|dementia|adhd|autism|eczema|psoriasis|inflammation|infection|illness|disease|addiction|ptsd|trauma|thyroid|digestion|metabolism|eyesight)\b
+\b(asthma|arthritis|diabetes|alzheimer'?s|dementia|adhd|autism|eczema|psoriasis|inflammation|infection|illness|disease|addiction|ptsd|trauma|thyroid|digestion|metabolism|eyesight)\b
 \bgrief\s+recovery\b
 \bcalm(s|ing)?\s+(the\s+|your\s+)?(mind|nerves|nervous|you|emotions)\b
 \bsooth(e|es|ing)\s+(the\s+|your\s+)?(mind|nerves|soul|emotions)\b

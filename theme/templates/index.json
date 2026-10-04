@@ -1,0 +1,270 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {}
+    },
+    "promise": {
+      "type": "promise-strip",
+      "blocks": {
+        "p1": {
+          "type": "item",
+          "settings": {
+            "icon": "clock",
+            "cutoff": true
+          }
+        },
+        "p2": {
+          "type": "item",
+          "settings": {
+            "icon": "van",
+            "strong": "Hand-delivered",
+            "text": ", never posted"
+          }
+        },
+        "p3": {
+          "type": "item",
+          "settings": {
+            "icon": "card",
+            "strong": "Your message",
+            "text": "on a card"
+          }
+        },
+        "p4": {
+          "type": "item",
+          "settings": {
+            "icon": "uk",
+            "strong": "Keepsakes",
+            "text": "sent UK-wide"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
+      "settings": {}
+    },
+    "occasions": {
+      "type": "occasion-chips",
+      "settings": {
+        "menu": "occasions"
+      }
+    },
+    "today": {
+      "type": "product-rail",
+      "settings": {
+        "collection": "same-day-flowers",
+        "count": 4
+      }
+    },
+    "balloons": {
+      "type": "feature",
+      "settings": {}
+    },
+    "lasting": {
+      "type": "tiles",
+      "blocks": {
+        "t1": {
+          "type": "tile",
+          "settings": {
+            "collection": "faux-flowers",
+            "scene": "faux",
+            "title": "Faux flowers",
+            "text": "Arrangements that stay as you set them"
+          }
+        },
+        "t2": {
+          "type": "tile",
+          "settings": {
+            "collection": "crystals",
+            "scene": "crystals",
+            "title": "Crystals",
+            "text": "Chosen for colour and the meaning behind them"
+          }
+        },
+        "t3": {
+          "type": "tile",
+          "settings": {
+            "collection": "gemstone-jewellery",
+            "scene": "jewellery",
+            "title": "Gemstone jewellery",
+            "text": "Small pieces to keep"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ],
+      "settings": {}
+    },
+    "story": {
+      "type": "story",
+      "settings": {}
+    },
+    "steps": {
+      "type": "steps",
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Choose your flowers",
+            "text": "Bouquets, balloon sets, or the two together."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Order by 10am",
+            "text": "Write your card message at checkout and it goes in with your gift."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "We deliver by hand",
+            "text": "Your gift goes out the same day across Enfield and North London."
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "settings": {}
+    },
+    "areas": {
+      "type": "areas",
+      "blocks": {
+        "a1": {
+          "type": "area",
+          "settings": {
+            "name": "Enfield Town",
+            "postcodes": "EN1 · EN2",
+            "page": "flower-delivery-enfield"
+          }
+        },
+        "a2": {
+          "type": "area",
+          "settings": {
+            "name": "Bush Hill Park",
+            "postcodes": "EN1",
+            "page": "flower-delivery-enfield"
+          }
+        },
+        "a3": {
+          "type": "area",
+          "settings": {
+            "name": "Enfield Lock & Ponders End",
+            "postcodes": "EN3",
+            "page": "flower-delivery-enfield-lock"
+          }
+        },
+        "a4": {
+          "type": "area",
+          "settings": {
+            "name": "Winchmore Hill",
+            "postcodes": "N21",
+            "page": "flower-delivery-winchmore-hill"
+          }
+        },
+        "a5": {
+          "type": "area",
+          "settings": {
+            "name": "Palmers Green",
+            "postcodes": "N13",
+            "page": "flower-delivery-palmers-green"
+          }
+        },
+        "a6": {
+          "type": "area",
+          "settings": {
+            "name": "Southgate & Oakwood",
+            "postcodes": "N14",
+            "page": "flower-delivery-southgate"
+          }
+        },
+        "a7": {
+          "type": "area",
+          "settings": {
+            "name": "Edmonton",
+            "postcodes": "N9 · N18",
+            "page": "flower-delivery-edmonton"
+          }
+        }
+      },
+      "block_order": [
+        "a1",
+        "a2",
+        "a3",
+        "a4",
+        "a5",
+        "a6",
+        "a7"
+      ],
+      "settings": {}
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "What time do I need to order for same-day delivery?",
+            "answer": "Order by 10am and we deliver the same day. Orders after 10am go out on the next delivery day, and you can choose a later date at checkout."
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Can I add a card message?",
+            "answer": "Yes. Type your message when you add the flowers to your basket and it goes on a card with your gift."
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Do you send flowers outside London?",
+            "answer": "Fresh flowers and balloons stay local, because we deliver them by hand. Faux flowers, crystals and jewellery are posted anywhere in the UK."
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "Can I choose a delivery date?",
+            "answer": "Yes. Pick the day when you order, up to [weeks ahead] in advance. [to confirm]"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4"
+      ],
+      "settings": {}
+    },
+    "news": {
+      "type": "newsletter",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "promise",
+    "occasions",
+    "today",
+    "balloons",
+    "lasting",
+    "story",
+    "steps",
+    "areas",
+    "faq",
+    "news"
+  ]
+}

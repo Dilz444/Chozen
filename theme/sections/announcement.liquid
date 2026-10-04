@@ -1,0 +1,14 @@
+{%- if section.settings.text != blank -%}
+<div class="announce">
+  <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-van"/></svg>
+  <span>{% if settings.same_day_paused %}{{ settings.paused_message }}{% else %}{{ section.settings.text }}{% endif %}</span>
+</div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "Announcement bar",
+  "settings": [
+    { "type": "text", "id": "text", "label": "Text", "default": "Same-day delivery in North London · order by 10am", "info": "Replaced by your pause message while same-day delivery is paused." }
+  ]
+}
+{% endschema %}

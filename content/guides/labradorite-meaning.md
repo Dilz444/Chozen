@@ -3,7 +3,7 @@ url: /blogs/guides/labradorite-meaning
 type: article
 template: article.guide
 title: Labradorite Meaning, Colour and Care | ChoZen Boutique
-meta: Labradorite is grey feldspar that flashes blue, green and gold. In crystal lore it's a stone of change and intuition. Where it's from and how to care for it.
+meta: Labradorite is grey feldspar that flashes blue, green and gold. In crystal lore it's a stone of change. Where it's from and how to care for it.
 h1: What does labradorite mean?
 lede: >-
   Labradorite is a grey feldspar that flashes peacock blue, green and gold when light hits it at the right angle.

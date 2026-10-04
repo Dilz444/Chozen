@@ -1,0 +1,91 @@
+{%- liquid
+  assign sympathy = false
+  if template.suffix == 'sympathy'
+    assign sympathy = true
+  endif
+  assign parent = collection.metafields.custom.parent.value
+  assign trail = ''
+  if parent != blank
+    assign trail = parent | append: ';;'
+  endif
+  assign trail = trail | append: collection.title
+-%}
+{% render 'breadcrumbs', trail: trail %}
+<div class="wrap">
+  <header class="pg-head coll-intro">
+    <h1>{{ collection.title }}</h1>
+    {%- if collection.description != blank -%}<div class="lede">{% render 'tbc', text: collection.description %}</div>{%- endif -%}
+  </header>
+
+  {%- paginate collection.products by section.settings.per_page -%}
+  <div class="coll-body">
+    {%- if collection.filters.size > 0 and section.settings.show_filters -%}
+      <details class="filters"{% if section.settings.filters_open %} open{% endif %}>
+        <summary>{{ 'collections.filter' | t }}</summary>
+        <form class="filters__body" action="{{ collection.url }}" method="get" data-filter-form>
+          {%- for filter in collection.filters -%}
+            {%- if filter.type == 'list' -%}
+              <fieldset>
+                <legend>{{ filter.label }}</legend>
+                {%- for value in filter.values -%}
+                  <label><input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}"{% if value.active %} checked{% endif %}{% if value.count == 0 and value.active == false %} disabled{% endif %}> {{ value.label }} ({{ value.count }})</label>
+                {%- endfor -%}
+              </fieldset>
+            {%- endif -%}
+          {%- endfor -%}
+          <input type="hidden" name="sort_by" value="{{ collection.sort_by | default: collection.default_sort_by }}">
+          <button class="btn btn--ghost btn--sm" type="submit">Show results</button>
+        </form>
+      </details>
+    {%- endif -%}
+
+    <div>
+      <div class="coll-bar">
+        <span>{{ 'collections.products_count' | t: count: collection.products_count }}</span>
+        <form action="{{ collection.url }}" method="get" data-sort-form>
+          <label class="vh" for="sort-{{ section.id }}">{{ 'collections.sort' | t }}</label>
+          <select id="sort-{{ section.id }}" name="sort_by" data-autosubmit>
+            {%- for option in collection.sort_options -%}
+              <option value="{{ option.value }}"{% if option.value == collection.sort_by %} selected{% endif %}>{{ option.name }}</option>
+            {%- endfor -%}
+          </select>
+        </form>
+      </div>
+      <ul class="grid">
+        {%- for product in collection.products -%}
+          {% render 'product-card', product: product, forloop: forloop %}
+        {%- else -%}
+          <li class="empty">{{ 'collections.empty' | t }}</li>
+        {%- endfor -%}
+      </ul>
+      {%- if paginate.pages > 1 -%}
+        <nav class="pagination" aria-label="Pages">
+          {%- for part in paginate.parts -%}
+            {%- if part.is_link -%}<a href="{{ part.url }}">{{ part.title }}</a>{%- elsif part.title == paginate.current_page -%}<span aria-current="page">{{ part.title }}</span>{%- else -%}<span>{{ part.title }}</span>{%- endif -%}
+          {%- endfor -%}
+        </nav>
+      {%- endif -%}
+    </div>
+  </div>
+  {%- endpaginate -%}
+
+  {%- assign faqs = collection.metafields.custom.faq.value -%}
+  {%- if faqs != blank -%}
+    <div class="coll-qa">{% render 'faq-list', faqs: faqs, heading: section.settings.faq_heading, id: section.id %}</div>
+  {%- endif -%}
+  {%- if collection.metafields.custom.footnote.value != blank -%}
+    <p class="note" style="margin-top: 24px">{{ collection.metafields.custom.footnote.value }}</p>
+  {%- endif -%}
+  {%- unless sympathy -%}<div style="height: var(--section)"></div>{%- endunless -%}
+</div>
+{% schema %}
+{
+  "name": "Collection",
+  "settings": [
+    { "type": "range", "id": "per_page", "label": "Products per page", "min": 8, "max": 48, "step": 4, "default": 24 },
+    { "type": "checkbox", "id": "show_filters", "label": "Show filters", "default": true },
+    { "type": "checkbox", "id": "filters_open", "label": "Filters open by default", "default": false },
+    { "type": "text", "id": "faq_heading", "label": "Questions heading", "default": "Questions people ask" }
+  ]
+}
+{% endschema %}

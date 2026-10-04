@@ -1,0 +1,19 @@
+{%- assign menu = linklists[section.settings.menu] -%}
+<section class="sec" id="occasions" aria-labelledby="occ-{{ section.id }}">
+  <div class="wrap">
+    <h2 id="occ-{{ section.id }}" class="h2-sm">{{ section.settings.heading }}</h2>
+    <ul class="chips">
+      {%- for link in menu.links -%}<li><a href="{{ link.url }}">{{ link.title }}</a></li>{%- endfor -%}
+    </ul>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Occasion links",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What's the occasion?" },
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "occasions" }
+  ],
+  "presets": [{ "name": "Occasion links" }]
+}
+{% endschema %}

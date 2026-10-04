@@ -1,0 +1,35 @@
+{%- liquid
+  assign am = article.metafields.custom
+  assign trail = blog.title | append: '|' | append: blog.url | append: ';;' | append: article.title
+-%}
+{% render 'breadcrumbs', trail: trail %}
+<article class="wrap pg-body">
+  <header class="pg-head">
+    <h1>{{ article.title }}</h1>
+    {%- if article.excerpt != blank -%}<div class="lede">{{ article.excerpt }}</div>{%- endif -%}
+    <p class="article-meta">By <a href="/pages/about">Beyzan</a> · {{ 'blogs.updated' | t: date: article.updated_at | date: '%-d %B %Y' }}</p>
+  </header>
+  {%- if article.image -%}
+    <div class="article-hero">{% render 'image', image: article.image, eager: true, sizes: '(min-width: 64em) 1160px, 100vw' %}</div>
+  {%- endif -%}
+  <div class="rte">{% render 'tbc', text: article.content %}</div>
+  {%- assign faqs = am.faq.value -%}
+  {%- if faqs != blank -%}<div class="sec" style="padding-left: 0; padding-right: 0">{% render 'faq-list', faqs: faqs, id: 'art' %}</div>{%- endif -%}
+  {%- if am.disclaimer.value != blank -%}<p class="note" style="margin-top: 32px">{{ am.disclaimer.value }}</p>{%- endif -%}
+  {%- if section.settings.collection != blank -%}
+    <div class="sec sec--tight" style="padding-left: 0; padding-right: 0">
+      <div class="sec__head"><h2>{{ section.settings.collection_heading }}</h2></div>
+      <ul class="grid">{%- for product in section.settings.collection.products limit: 4 -%}{% render 'product-card', product: product, forloop: forloop %}{%- endfor -%}</ul>
+    </div>
+  {%- endif -%}
+</article>
+{% render 'schema-article', article: article %}
+{% schema %}
+{
+  "name": "Article",
+  "settings": [
+    { "type": "collection", "id": "collection", "label": "Products to show under the guide" },
+    { "type": "text", "id": "collection_heading", "label": "Products heading", "default": "You might also like" }
+  ]
+}
+{% endschema %}

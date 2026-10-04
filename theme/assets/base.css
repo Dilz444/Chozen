@@ -419,3 +419,8 @@ body.no-scroll { overflow: hidden; }
 @media print {
   .hdr, .announce, .mbar, .ftr, .drawer { display: none !important; }
 }
+.hdr__cart { position: relative; }
+.hdr__count { position: absolute; top: 6px; right: 4px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; background: var(--rose); color: var(--white); font: 500 11px/18px var(--font-body); text-align: center; }
+.hdr__nav a[aria-current] { color: var(--rose); border-color: var(--rose); }
+.pdp__dyn { margin-top: 10px; }
+.drawer[hidden] { display: none; }

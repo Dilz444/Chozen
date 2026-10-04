@@ -1,0 +1,166 @@
+{%- liquid
+  assign m = product.metafields.custom
+  assign line = m.line.value
+  assign local = false
+  if product.tags contains 'local-only'
+    assign local = true
+  endif
+  assign v = product.selected_or_first_available_variant
+  assign coll = collection | default: product.collections.first
+  assign trail = ''
+  if coll
+    assign trail = coll.title | append: '|' | append: coll.url | append: ';;'
+  endif
+  assign trail = trail | append: product.title
+  assign scene = 'bouquet'
+  case line
+    when 'balloon'
+      assign scene = 'balloons'
+    when 'faux'
+      assign scene = 'faux'
+    when 'crystal'
+      assign scene = 'crystals'
+    when 'jewellery'
+      assign scene = 'jewellery'
+  endcase
+-%}
+{% render 'breadcrumbs', trail: trail %}
+<div class="wrap">
+  <div class="pdp">
+    <div class="pdp__gallery">
+      <div class="pdp__main{% if product.featured_image == blank %} ph{% endif %}"{% if product.featured_image == blank %} data-label="{{ 'general.photo_to_come' | t }}"{% endif %} data-gallery-main>
+        {%- if product.featured_image != blank -%}
+          {% render 'image', image: product.featured_image, eager: true, sizes: '(min-width: 64em) 55vw, (min-width: 48em) 50vw, 100vw', widths: '390, 540, 780, 1080, 1440' %}
+        {%- else -%}
+          <svg viewBox="0 0 400 400" aria-hidden="true" focusable="false"><use href="#s-{{ scene }}"/></svg>
+        {%- endif -%}
+      </div>
+      {%- if product.images.size > 1 -%}
+        <div class="pdp__thumbs">
+          {%- for img in product.images -%}
+            <button type="button" aria-label="Show photo {{ forloop.index }}" aria-current="{% if forloop.first %}true{% else %}false{% endif %}" data-gallery-thumb="{{ img | image_url: width: 1080 }}" data-alt="{{ img.alt | escape }}">
+              {{ img | image_url: width: 128 | image_tag: loading: 'lazy', alt: '' }}
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="pdp__info">
+      {%- if local -%}<p class="eyebrow eyebrow--sage">{{ 'delivery.same_day_badge' | t }} · Enfield &amp; North London</p>{%- else -%}<p class="eyebrow eyebrow--sage">{{ 'delivery.uk_title' | t }}</p>{%- endif -%}
+      <h1 class="pdp__title">{{ product.title }}</h1>
+      <p class="pdp__price" data-price>{% if product.tags contains 'sample' %}<span class="sample">{{ 'general.sample' | t }}</span> £—{% else %}{{ v.price | money_without_trailing_zeros }}{% endif %}</p>
+      <p class="pdp__tax">{{ 'products.tax' | t }}</p>
+      {%- if m.summary.value != blank -%}<p class="pdp__summary">{{ m.summary.value }}</p>{%- endif -%}
+
+      {%- if local -%}
+        <div class="deliv{% if settings.same_day_paused %} deliv--paused{% endif %}">
+          <span>{% render 'cutoff' %}</span>
+          <span>Hand-delivered across Enfield and North London. Delivery {% render 'tbc', text: settings.local_fee_text %}. <a href="/pages/delivery">Areas and prices</a></span>
+        </div>
+      {%- else -%}
+        <div class="deliv deliv--uk">
+          <span><strong>{{ 'delivery.uk_title' | t }}.</strong> {% render 'tbc', text: settings.uk_shipping_text %}</span>
+          <span>14 days to change your mind. <a href="{{ shop.refund_policy.url | default: '/policies/refund-policy' }}">Returns</a></span>
+        </div>
+      {%- endif -%}
+
+      {%- form 'product', product, class: 'pdp__form', data-product-form: '' -%}
+        <input type="hidden" name="id" value="{{ v.id }}" data-variant-id>
+        {%- unless product.has_only_default_variant -%}
+          {%- for option in product.options_with_values -%}
+            <fieldset class="variants">
+              <legend class="field__legend">{{ option.name }}</legend>
+              <div class="variants__opts">
+                {%- for value in option.values -%}
+                  <input type="radio" id="opt-{{ section.id }}-{{ forloop.parentloop.index }}-{{ forloop.index }}" name="option{{ forloop.parentloop.index }}" value="{{ value | escape }}"{% if option.selected_value == value %} checked{% endif %} data-option>
+                  <label for="opt-{{ section.id }}-{{ forloop.parentloop.index }}-{{ forloop.index }}">{{ value }}</label>
+                {%- endfor -%}
+              </div>
+            </fieldset>
+          {%- endfor -%}
+        {%- endunless -%}
+
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when '@app' -%}
+              {% render block %}
+          {%- endcase -%}
+        {%- endfor -%}
+        {%- if local and section.settings.show_app_slot_note -%}
+          <p class="app-slot">Delivery date picker (delivery app) appears here once it's installed. Same-day closes at the cut-off.</p>
+        {%- endif -%}
+
+        {%- if local or m.card_message.value -%}
+          <div class="field">
+            <label for="card-{{ section.id }}">{{ 'products.card_message' | t }}</label>
+            <textarea id="card-{{ section.id }}" name="properties[Card message]" maxlength="200" data-counter="card-count-{{ section.id }}"></textarea>
+            <small>{{ 'products.card_message_help' | t }}</small>
+            <span class="counter" id="card-count-{{ section.id }}" aria-live="polite">0 / 200</span>
+          </div>
+        {%- endif -%}
+
+        <div class="field">
+          <label for="qty-{{ section.id }}">{{ 'products.quantity' | t }}</label>
+          <div class="qty">
+            <button type="button" aria-label="One fewer" data-qty="-1">−</button>
+            <input id="qty-{{ section.id }}" type="number" name="quantity" value="1" min="1" inputmode="numeric">
+            <button type="button" aria-label="One more" data-qty="1">+</button>
+          </div>
+        </div>
+
+        <button class="btn btn--primary atc" type="submit" name="add"{% unless v.available %} disabled{% endunless %}{% if product.tags contains 'sample' %} disabled{% endif %} data-add>
+          {%- if product.tags contains 'sample' -%}Sample product, not for sale{%- elsif v.available -%}{{ 'products.add' | t }}{%- else -%}{{ 'products.sold_out' | t }}{%- endif -%}
+        </button>
+        {%- if section.settings.dynamic_checkout and local == false -%}
+          <div class="pdp__dyn">{{ form | payment_button }}</div>
+        {%- endif -%}
+      {%- endform -%}
+
+      <div class="pdp__specs">
+        {%- if product.description != blank -%}
+          <details open><summary>About it</summary><div class="rte">{{ product.description }}</div></details>
+        {%- endif -%}
+        {%- if m.whats_in_it.value != blank -%}
+          <details{% if product.description == blank %} open{% endif %}><summary>{{ 'products.whats_in_it' | t }}</summary><div class="rte">{{ m.whats_in_it | metafield_tag }}</div></details>
+        {%- endif -%}
+        {%- if m.size.value != blank -%}
+          <details><summary>{{ 'products.size' | t }}</summary><div class="rte"><p>{{ m.size.value }}</p></div></details>
+        {%- endif -%}
+        {%- if m.crystal_meaning.value != blank -%}
+          <details><summary>{{ 'products.meaning' | t }}</summary><div class="rte">{{ m.crystal_meaning | metafield_tag }}</div></details>
+        {%- endif -%}
+        {%- if m.materials.value != blank and line != 'jewellery' -%}
+          <details><summary>{{ 'products.materials' | t }}</summary><div class="rte"><p>{{ m.materials.value }}</p></div></details>
+        {%- endif -%}
+        {%- if m.care.value != blank -%}
+          <details><summary>{{ 'products.care' | t }}</summary><div class="rte">{{ m.care | metafield_tag }}</div></details>
+        {%- endif -%}
+        <details>
+          <summary>{{ 'products.delivery' | t }}</summary>
+          <div class="rte">
+            {%- if local -%}
+              <p>We hand-deliver in Enfield and North London on delivery days. {% render 'cutoff' %}. Fresh flowers can't be returned because they're perishable, but if anything arrives damaged, tell us and we'll put it right. <a href="/pages/delivery">Delivery areas and prices</a></p>
+            {%- else -%}
+              <p>{% render 'tbc', text: settings.uk_shipping_text %}. You have 14 days from delivery to change your mind. <a href="{{ shop.refund_policy.url | default: '/policies/refund-policy' }}">Returns and refunds</a></p>
+            {%- endif -%}
+          </div>
+        </details>
+      </div>
+      {% render 'warnings', product: product %}
+    </div>
+  </div>
+</div>
+<script type="application/json" data-product-json>{{ product.variants | json }}</script>
+{% render 'schema-product', product: product %}
+
+{% schema %}
+{
+  "name": "Product",
+  "settings": [
+    { "type": "checkbox", "id": "dynamic_checkout", "label": "Show Apple Pay / Shop Pay buttons", "info": "Never shown on same-day products, because they skip the delivery date.", "default": false },
+    { "type": "checkbox", "id": "show_app_slot_note", "label": "Show a note where the delivery-date app goes", "info": "Turn off once the app is installed.", "default": true }
+  ],
+  "blocks": [{ "type": "@app" }]
+}
+{% endschema %}

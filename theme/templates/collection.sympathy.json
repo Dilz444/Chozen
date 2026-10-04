@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "show_filters": false,
+        "faq_heading": "Questions families ask"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

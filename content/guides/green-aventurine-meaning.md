@@ -3,7 +3,7 @@ url: /blogs/guides/green-aventurine-meaning
 type: article
 template: article.guide
 title: Green Aventurine Meaning and Care | ChoZen Boutique
-meta: Green aventurine is quartz that glitters with flakes of green mica. In folklore it's a lucky stone, often given for a new start. Where it's from and how to care for it.
+meta: Green aventurine is quartz that glitters with green mica. In folklore it's a lucky stone, given for a new start. Where it's from and how to care for it.
 h1: What does green aventurine mean?
 lede: >-
   Green aventurine is a green quartz that glitters with tiny flakes of mica. In folklore it's known as a lucky

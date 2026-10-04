@@ -3,7 +3,7 @@ url: /blogs/guides/citrine-meaning
 type: article
 template: article.guide
 title: Citrine Meaning, Colour and Care | ChoZen Boutique
-meta: Citrine is yellow to orange quartz, known in folklore as the merchant's stone. Why most citrine is heat-treated amethyst, how to spot it and how to care for it.
+meta: Citrine is yellow to orange quartz, the merchant's stone of folklore. Why most citrine is heat-treated amethyst, how to spot it and how to care for it.
 h1: What does citrine mean?
 lede: >-
   Citrine is yellow to golden-orange quartz. In folklore it's the "merchant's stone", linked with warmth and good
@@ -28,7 +28,7 @@ faq:
       be strong orange at the tips and white or cream at the base.
   - q: Is citrine November's birthstone?
     a: >-
-      On the US list it is, beside topaz. The UK list keeps topaz alone for November.
+      It's November's alternative. Topaz comes first on both the UK and US lists, with citrine listed beside it.
 links: [/blogs/guides/crystal-meanings, /collections/crystals, /blogs/guides/amethyst-meaning, /blogs/guides/birthstones-by-month]
 ---
 
@@ -60,7 +60,7 @@ and Leo.
 ## Who would you give it to?
 
 Someone opening a shop, starting a business or starting a new job, with a card about the merchant's stone. A
-November birthday, for anyone using the US list or who'd like a lower-cost stone than topaz. A friend who loves
+November birthday, as a lower-cost alternative to topaz. A friend who loves
 yellow, or someone with a sunny kitchen windowsill. A point or small cluster suits a desk. See the
 [crystals collection](/collections/crystals) for what's in.
 

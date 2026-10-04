@@ -1,9 +1,0 @@
-{%- comment -%}
-  A line drawing standing in for a photo that hasn't been taken yet, always labelled.
-  Usage: {% render 'placeholder-art', scene: 'bouquet', label: 'Photo to come', alt_tone: true, small: true %}
-  Scenes: bouquet, balloons, faux, crystals, jewellery, portrait
-{%- endcomment -%}
-{%- assign label = label | default: 'Photo to come' -%}
-<span class="ph{% if alt_tone %} ph--alt{% endif %}{% if small %} ph--sm{% endif %}" data-label="{{ label | escape }}" role="img" aria-label="{{ label | escape }}">
-  <svg viewBox="0 0 400 400" aria-hidden="true" focusable="false"><use href="#s-{{ scene | default: 'bouquet' }}"/></svg>
-</span>

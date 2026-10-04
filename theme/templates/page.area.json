@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "kind": "area",
+        "collection": "same-day-flowers",
+        "collection_heading": "Flowers we can bring today"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

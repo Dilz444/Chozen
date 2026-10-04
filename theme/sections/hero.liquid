@@ -1,0 +1,41 @@
+<section class="hero">
+  <div class="hero__media{% if section.settings.image == blank %} ph{% endif %}"{% if section.settings.image == blank %} data-label="{{ 'general.photo_to_come' | t }}: {{ section.settings.placeholder_label }}"{% endif %}>
+    {%- if section.settings.image != blank -%}
+      {% render 'image', image: section.settings.image, eager: true, sizes: '(min-width: 64em) 50vw, 100vw', widths: '390, 540, 780, 1080, 1440, 1800' %}
+    {%- else -%}
+      <svg viewBox="0 0 400 400" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet"><use href="#s-bouquet"/></svg>
+    {%- endif -%}
+  </div>
+  <div class="hero__text">
+    {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+    <h1>{{ section.settings.heading }}</h1>
+    <p class="lede">{{ section.settings.lede }}</p>
+    <div class="hero__ctas" data-hero-ctas>
+      {%- if section.settings.cta_1_label != blank -%}
+        <a class="btn btn--primary" href="{{ section.settings.cta_1_link | default: '/collections/same-day-flowers' }}">{{ section.settings.cta_1_label }} <svg aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+      {%- endif -%}
+      {%- if section.settings.cta_2_label != blank -%}
+        <a class="btn btn--ghost" href="{{ section.settings.cta_2_link | default: '/collections/balloon-gift-sets' }}">{{ section.settings.cta_2_label }}</a>
+      {%- endif -%}
+    </div>
+    {%- if section.settings.show_postcode -%}{% render 'postcode-check', id: 'hero' %}{%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Photo", "info": "Square or portrait, at least 1600px. Shown at 2:1 on phones." },
+    { "type": "text", "id": "placeholder_label", "label": "Placeholder label (until a photo is added)", "default": "hero bouquet" },
+    { "type": "text", "id": "eyebrow", "label": "Small line above the heading", "default": "Florist · Enfield, North London" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Flowers and balloons, <em>hand‑delivered</em> in Enfield today" },
+    { "type": "textarea", "id": "lede", "label": "Opening sentence", "default": "Fresh bouquets and balloon gift sets, made up in Enfield and delivered by hand the same day across North London. Order by 10am." },
+    { "type": "text", "id": "cta_1_label", "label": "Main button", "default": "Shop same-day flowers" },
+    { "type": "url", "id": "cta_1_link", "label": "Main button link" },
+    { "type": "text", "id": "cta_2_label", "label": "Second button", "default": "Balloon gift sets" },
+    { "type": "url", "id": "cta_2_link", "label": "Second button link" },
+    { "type": "checkbox", "id": "show_postcode", "label": "Show the postcode checker", "default": true }
+  ],
+  "presets": [{ "name": "Hero" }]
+}
+{% endschema %}

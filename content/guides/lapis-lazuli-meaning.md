@@ -3,7 +3,7 @@ url: /blogs/guides/lapis-lazuli-meaning
 type: article
 template: article.guide
 title: Lapis Lazuli Meaning, Colour and Care | ChoZen Boutique
-meta: Lapis lazuli is deep blue stone with gold flecks, prized since ancient Egypt and linked with wisdom. The alternative September birthstone in the UK. Care and origins.
+meta: Lapis lazuli is deep blue stone with gold flecks, prized since ancient Egypt and linked with wisdom. Where it's mined and how to care for it.
 h1: What does lapis lazuli mean?
 lede: >-
   Lapis lazuli is a deep blue stone flecked with gold-coloured pyrite. It has been linked with wisdom and royalty
@@ -21,7 +21,7 @@ faq:
   - q: Is lapis lazuli September's birthstone?
     a: >-
       On the UK list, September's birthstone is sapphire with lapis lazuli as the alternative. The US list gives
-      sapphire only.
+      sapphire only. Older UK charts list lapis for December too.
   - q: Are the gold flecks in lapis real gold?
     a: >-
       No. They're pyrite, an iron sulphide often called fool's gold. White streaks are calcite.

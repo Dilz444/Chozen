@@ -1,0 +1,16 @@
+<div class="wrap pg-body">
+  <header class="pg-head"><h1>Shop</h1></header>
+  <ul class="tiles" style="margin-top: 24px">
+    {%- for c in collections -%}
+      {%- unless c.handle == 'all' or c.handle == 'frontpage' -%}
+      <li class="tile"><a href="{{ c.url }}">
+        <span class="tile__img{% if c.image == blank %} ph{% cycle '', ' ph--alt' %}{% endif %}"{% if c.image == blank %} data-label="{{ 'general.photo_to_come' | t }}"{% endif %}>{% if c.image %}{% render 'image', image: c.image, sizes: '(min-width: 48em) 33vw, 100vw' %}{% else %}<svg viewBox="0 0 400 400" aria-hidden="true" focusable="false"><use href="#s-bouquet"/></svg>{% endif %}</span>
+        <span class="tile__t">{{ c.title }}</span>
+      </a></li>
+      {%- endunless -%}
+    {%- endfor -%}
+  </ul>
+</div>
+{% schema %}
+{ "name": "Collections list" }
+{% endschema %}

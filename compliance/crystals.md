@@ -39,7 +39,9 @@ All patterns are case-insensitive. Two tiers:
 
 **Exceptions** (strip these before linting): the exact standard disclaimer in §5; `heat-treated`, `untreated`
 and the treatment words in a gem-disclosure line (§7); the word "healing" inside a quoted ASA ruling name in this
-file. Nothing else is exempt, including blog posts, captions and alt text.
+file. Nothing else is exempt, including blog posts, captions and alt text. Scope: the health-claims rules run on
+every page, but a flower pet-safety page (`content/guides/flowers-and-pets.md`) may name symptoms such as
+"stomach pain" in an animal, because that's a warning, not a claim; whitelist that file for the Pain group only.
 
 ### BLOCK
 
@@ -59,14 +61,14 @@ file. Nothing else is exempt, including blog posts, captions and alt text.
 | Pain | `\bpain(s\|ful\|kill\w*)?\b`, `\bach(e\|es\|ing)\b`, `\bheadaches?\b`, `\bmigraines?\b` | pain, headaches |
 | Reproductive | `\bfertil(e\|ity)\b`, `\bconcei(ve\|ving\|ption)\b`, `\bhormon\w*`, `\bmenopaus\w*`, `\bmeno\b`, `\bmenstrua\w*`, `\bperiod\s+pain\b`, `\blibido\b` | fertility, hormone, meno |
 | Circulation | `\bblood\s+pressure\b`, `\bcirculation\b`, `\bheart\s+(health\|condition\w*\|disease)\b` | blood pressure |
-| Radiation | `\bEMF\b`, `\bradiation\b`, `\b5G\s+protect\w*`, `\bwi-?fi\s+(protect\w*\|shield\w*)` | EMF protection, radiation (does not match "irradiated") |
+| Radiation | `\bEMF\b`, `\banti-?radiation\b`, `\bradiation\s+(protect\w*\|shield\w*\|block\w*)`, `\b(absorb\|block\|shield\|neutrali[sz])\w*\s+(\w+\s+)?radiation\b`, `\b5G\s+protect\w*`, `\bwi-?fi\s+(protect\w*\|shield\w*)` | EMF protection, absorbs radiation (bare "radiation" is REVIEW, because "natural radiation" explains amethyst and smoky quartz colour) |
 | Chakra as effect | `\bchakra\s+(heal\w*\|balanc\w*\|align\w*\|clear\w*\|open\w*\|unblock\w*\|activat\w*)`, `\b(balanc\|align\|open\|unblock\|clear\|activat)\w*\s+(your\s+\|the\s+\|all\s+)?(\w+\s+)?chakras?\b` | chakra balancing, opens your heart chakra |
 | Energy as effect | `\benergy\s+(heal\w*\|work\s+heal\w*)`, `\b(absorb\|neutrali[sz]\|remov\|block\|repel\|purif\|transmut)\w*\s+(all\s+)?(negative\s+\|bad\s+\|harmful\s+)?energ\w*` | energy healing, absorbs negative energy |
 | Vibration | `\braises?\s+(your\s+)?vibration\w*`, `\bhigh[- ]vibration(al)?\b`, `\bfrequency\s+(heal\w*\|align\w*)` | raises your vibration |
 | Protection as promise | `\bprotects?\s+(you\|your\|the\s+wearer\|against\|from\|children\|babies\|pets)\b`, `\bprotection\s+(from\|against)\b`, `\bshields?\s+(you\|your)\b`, `\bwards?\s+off\b` | protects you, wards off |
 | Promise | `\battract(s\|ing)?\s+(more\s+)?(money\|wealth\|love\|luck\|abundance\|success\|prosperity\|a\s+partner\|good\s+fortune)`, `\bbring(s\|ing)?\s+(you\s+)?(money\|wealth\|love\|luck\|abundance\|success\|prosperity)`, `\bwill\s+(bring\|attract\|protect\|change\|transform\|heal)\b`, `\bguarantee\w*` | attracts money, will bring love |
 | Medical authority | `\bmedical(ly)?\b`, `\bclinical(ly)?\b`, `\bscientifically\b`, `\bproven\b`, `\bdoctors?\b`, `\bmedicine\b`, `\bprescri\w*` | clinically proven |
-| Conditions | `\b(asthma\|arthritis\|cancer\|diabetes\|alzheimer'?s\|dementia\|adhd\|autism\|eczema\|psoriasis\|inflammation\|infection\|illness\|disease\|addiction\|ptsd\|trauma\|grief\s+recovery\|thyroid\|digestion\|metabolism\|eyesight)\b` | any named condition |
+| Conditions | `\b(asthma\|arthritis\|diabetes\|alzheimer'?s\|dementia\|adhd\|autism\|eczema\|psoriasis\|inflammation\|infection\|illness\|disease\|addiction\|ptsd\|trauma\|grief\s+recovery\|thyroid\|digestion\|metabolism\|eyesight)\b` | any named condition |
 | Calming as effect | `\bcalm(s\|ing)?\s+(the\s+\|your\s+)?(mind\|nerves\|nervous\|you\|emotions)\b`, `\bsooth(e\|es\|ing)\s+(the\s+\|your\s+)?(mind\|nerves\|soul\|emotions)\b`, `\b(reduc\|eas\|lower)\w*\s+(anger\|tension\|fear\|worry\|overthinking)\b` | calms the mind |
 | Cosmetic | `\banti-?(ageing\|aging\|wrinkle\|inflammatory)\b`, `\bwrinkles?\b`, `\bpuffiness\b`, `\blymphatic\b`, `\bcollagen\b` | rose quartz roller claims |
 | Fear | `\bbad\s+luck\b`, `\bcurse[sd]?\b`, `\bevil\s+eye\b`, `\bnegative\s+entit\w*` | ward off bad luck |
@@ -76,6 +78,8 @@ file. Nothing else is exempt, including blog posts, captions and alt text.
 
 | Pattern | Usually fine when | Wrong when |
 |---|---|---|
+| `\bradiation\b` | geology: "natural radiation" in the rock darkens smoky quartz and colours amethyst | any link between a stone and radiation from phones, wifi or devices |
+| `\bcancers?\b` | the star sign Cancer (zodiac copy) | the illness, anywhere |
 | `\btreat(s\|ed\|ing)?\b`, `\btreatment\b` | "a treat for mum", gem-treatment disclosure | "treats", "treatment for" a condition |
 | `\bprevent\w*` | care copy ("to stop it fading" is better anyway) | "prevents" anything bodily |
 | `\bsleep\w*`, `\bbedtime\b`, `\bnight(s)?\b` | "for the bedside", a product name | any effect on sleep |

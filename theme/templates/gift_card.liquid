@@ -1,0 +1,24 @@
+{%- layout none -%}
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Your {{ shop.name }} gift card</title>
+  {%- render 'fonts' -%}
+  {{ 'tokens.css' | asset_url | stylesheet_tag }}
+  {{ 'base.css' | asset_url | stylesheet_tag }}
+  {{ content_for_header }}
+</head>
+<body>
+  <main class="wrap pg-body" style="text-align:center; padding-top: 56px">
+    <p class="eyebrow">{{ shop.name }}</p>
+    <h1 style="font-size: 40px">A gift card for you</h1>
+    <p class="pdp__price" style="margin: 16px 0">{{ gift_card.balance | money }}</p>
+    <p>Your code: <strong>{{ gift_card.code | format_code }}</strong></p>
+    {%- if gift_card.expired -%}<p class="note">This gift card has expired.</p>{%- endif -%}
+    <p style="margin-top: 24px"><a class="btn btn--primary" href="{{ shop.url }}">Shop now</a></p>
+  </main>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<div class="wrap pg-body">
+  <header class="pg-head">
+    <h1>{{ '404.title' | t }}</h1>
+    <p class="lede">{{ '404.text' | t }}</p>
+  </header>
+  <div class="hero__ctas" style="margin-top: 24px"><a class="btn btn--primary" href="{{ routes.collections_url }}/same-day-flowers">Today's flowers <svg aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a><a class="btn btn--ghost" href="{{ routes.root_url }}">{{ 'general.home' | t }}</a></div>
+  <form class="search-form" action="{{ routes.search_url }}" method="get" role="search">
+    <label class="vh" for="q404">{{ 'search.title' | t }}</label>
+    <input id="q404" type="search" name="q" placeholder="{{ 'search.placeholder' | t }}">
+    <button class="btn btn--sage" type="submit">{{ 'general.search' | t }}</button>
+  </form>
+</div>
+{% schema %}
+{ "name": "Page not found" }
+{% endschema %}

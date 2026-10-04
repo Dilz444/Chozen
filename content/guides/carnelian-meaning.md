@@ -3,7 +3,7 @@ url: /blogs/guides/carnelian-meaning
 type: article
 template: article.guide
 title: Carnelian Meaning, Colour and Care | ChoZen Boutique
-meta: Carnelian is orange chalcedony, the alternative July birthstone in the UK and in crystal lore a stone of courage and creativity. Where it's from and how to care for it.
+meta: Carnelian is orange chalcedony, the alternative July birthstone in the UK and a stone of courage in crystal lore. Where it's from and how to care for it.
 h1: What does carnelian mean?
 lede: >-
   Carnelian is a translucent orange to red-brown chalcedony, a fine-grained quartz. In crystal lore it's a stone

@@ -3,7 +3,7 @@ url: /blogs/guides/selenite-meaning
 type: article
 template: article.guide
 title: Selenite Meaning and Care | ChoZen Boutique
-meta: Selenite is a soft, satiny white form of gypsum named after the Greek moon goddess. What it means in crystal lore, where it's from and why it must stay dry.
+meta: Selenite is a soft, satiny white gypsum named after the Greek moon goddess. What it means in crystal lore, where it's from and why it must stay dry.
 h1: What does selenite mean?
 lede: >-
   Selenite is a soft, white form of the mineral gypsum, named after Selene, the Greek goddess of the moon. In

@@ -1,0 +1,46 @@
+{%- liquid
+  assign has_local = false
+  for item in cart.items
+    if item.product.tags contains 'local-only'
+      assign has_local = true
+    endif
+  endfor
+-%}
+<div class="wrap pg-body">
+  <header class="pg-head"><h1>{{ 'cart.title' | t }}</h1></header>
+  {%- if cart.item_count == 0 -%}
+    <p class="empty">{{ 'cart.empty' | t }} <a class="link-arrow" href="{{ routes.collections_url }}/same-day-flowers">Today's flowers <svg aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></p>
+  {%- else -%}
+    <form action="{{ routes.cart_url }}" method="post" id="cart">
+      {%- if has_local -%}<p class="note note--warn" style="margin: 16px 0">{{ 'cart.local_only' | t }}</p>{%- endif -%}
+      <ul class="cart-lines">
+        {%- for item in cart.items -%}
+          <li class="cart-line">
+            <a class="cart-line__img" href="{{ item.url }}" tabindex="-1" aria-hidden="true">{% if item.image %}{{ item.image | image_url: width: 240 | image_tag: loading: 'lazy', alt: '' }}{% endif %}</a>
+            <div>
+              <a class="cart-line__t" href="{{ item.url }}">{{ item.product.title }}</a>
+              {%- unless item.product.has_only_default_variant -%}<p class="cart-line__p">{{ item.variant.title }}</p>{%- endunless -%}
+              {%- for p in item.properties -%}{%- unless p.last == blank or p.first contains '_' -%}<p class="cart-line__p">{{ p.first }}: {{ p.last }}</p>{%- endunless -%}{%- endfor -%}
+              <div class="cart-line__row">
+                <label class="vh" for="q-{{ forloop.index }}">{{ 'products.quantity' | t }}</label>
+                <input class="qty-in" id="q-{{ forloop.index }}" type="number" name="updates[]" value="{{ item.quantity }}" min="0" inputmode="numeric" style="width: 64px; min-height: 44px; font-size: 16px; text-align: center; border: 1px solid var(--ink-2)">
+                <span class="price">{{ item.final_line_price | money_without_trailing_zeros }}</span>
+              </div>
+              <a class="cart-line__rm" href="{{ item.url_to_remove }}">{{ 'cart.remove' | t }}</a>
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+      {%- for block in section.blocks -%}{%- if block.type == '@app' -%}{% render block %}{%- endif -%}{%- endfor -%}
+      <div class="cart-sum">
+        <div class="cart-sum__row"><span>{{ 'cart.subtotal' | t }}</span><span>{{ cart.total_price | money_without_trailing_zeros }}</span></div>
+        <p class="pdp__tax">{{ 'cart.note' | t }}</p>
+        <button class="btn btn--ghost btn--sm" type="submit" name="update">Update basket</button>
+        <button class="btn btn--primary" type="submit" name="checkout">{{ 'cart.checkout' | t }}</button>
+      </div>
+    </form>
+  {%- endif -%}
+</div>
+{% schema %}
+{ "name": "Basket", "blocks": [{ "type": "@app" }] }
+{% endschema %}

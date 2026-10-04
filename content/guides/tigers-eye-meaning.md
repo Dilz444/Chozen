@@ -3,7 +3,7 @@ url: /blogs/guides/tigers-eye-meaning
 type: article
 template: article.guide
 title: Tiger's Eye Meaning, Colour and Care | ChoZen Boutique
-meta: Tiger's eye is golden-brown quartz with a band of moving light, traditionally linked with courage. Where it's mined, who to give it to and how to care for it.
+meta: Tiger's eye is golden-brown quartz with a band of moving light, traditionally linked with courage. Where it's mined, who to give it to and its care.
 h1: What does tiger's eye mean?
 lede: >-
   Tiger's eye is golden-brown quartz with a silky band of light that moves as you turn it. It's traditionally

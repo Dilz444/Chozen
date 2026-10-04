@@ -14,6 +14,7 @@
   endif
   assign base = request.origin | append: '/'
   assign zones = settings.delivery_zones | upcase | remove: ' ' | split: ','
+  assign social_keys = 'instagram,tiktok,facebook,pinterest,google_profile' | split: ','
 -%}
 {%- if show -%}
 <script type="application/ld+json">
@@ -45,7 +46,7 @@
       {%- if settings.price_range != blank %}"priceRange": {{ settings.price_range | json }},{% endif %}
       "areaServed": [{% for z in zones %}{ "@type": "PostalCodeRangeSpecification", "postalCodeBegin": {{ z | json }} }{% unless forloop.last %},{% endunless %}{% endfor %}],
       "parentOrganization": { "@id": {{ base | append: '#org' | json }} },
-      "sameAs": [{% assign first = true %}{% for s in 'instagram,tiktok,facebook,pinterest,google_profile' | split: ',' %}{% if settings[s] != blank %}{% unless first %},{% endunless %}{{ settings[s] | json }}{% assign first = false %}{% endif %}{% endfor %}]
+      "sameAs": [{% assign first = true %}{% for s in social_keys %}{% if settings[s] != blank %}{% unless first %},{% endunless %}{{ settings[s] | json }}{% assign first = false %}{% endif %}{% endfor %}]
     }
     {%- if request.page_type == 'index' -%}
     ,{

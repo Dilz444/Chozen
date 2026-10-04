@@ -1,0 +1,9 @@
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "announcement": { "type": "announcement", "settings": { "text": "Same-day delivery in North London · order by 10am" } },
+    "header": { "type": "header", "settings": { "menu": "main-menu" } }
+  },
+  "order": ["announcement", "header"]
+}

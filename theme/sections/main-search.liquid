@@ -1,0 +1,23 @@
+<div class="wrap pg-body">
+  <header class="pg-head"><h1>{{ 'search.title' | t }}</h1></header>
+  <form class="search-form" action="{{ routes.search_url }}" method="get" role="search">
+    <label class="vh" for="q">{{ 'search.title' | t }}</label>
+    <input id="q" type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'search.placeholder' | t }}">
+    <button class="btn btn--primary" type="submit">{{ 'general.search' | t }}</button>
+  </form>
+  {%- if search.performed -%}
+    {%- if search.results_count == 0 -%}
+      <p class="empty">{{ 'search.none' | t: terms: search.terms }}</p>
+    {%- else -%}
+      <ul class="grid">
+        {%- for item in search.results -%}
+          {%- if item.object_type == 'product' -%}{% render 'product-card', product: item, forloop: forloop %}
+          {%- else -%}<li class="card"><h3 class="card__t"><a href="{{ item.url }}">{{ item.title }}</a></h3><p class="card__from">{{ item.content | strip_html | truncatewords: 18 }}</p></li>{%- endif -%}
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  {%- endif -%}
+</div>
+{% schema %}
+{ "name": "Search" }
+{% endschema %}

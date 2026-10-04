@@ -1,0 +1,19 @@
+<section class="sec" aria-labelledby="sp-{{ section.id }}">
+  <div class="wrap">
+    <h2 id="sp-{{ section.id }}" class="center">{{ section.settings.heading }}</h2>
+    <ol class="steps">
+      {%- for block in section.blocks -%}
+        <li {{ block.shopify_attributes }}><span class="steps__n" aria-hidden="true">{{ forloop.index }}</span><h3>{{ block.settings.title }}</h3><p>{{ block.settings.text }}</p></li>
+      {%- endfor -%}
+    </ol>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Steps",
+  "max_blocks": 4,
+  "settings": [{ "type": "text", "id": "heading", "label": "Heading", "default": "How does same-day delivery work?" }],
+  "blocks": [{ "type": "step", "name": "Step", "settings": [{ "type": "text", "id": "title", "label": "Title", "default": "Choose your flowers" }, { "type": "textarea", "id": "text", "label": "Text", "default": "Bouquets, balloon sets, or the two together." }] }],
+  "presets": [{ "name": "Steps", "blocks": [{ "type": "step" }, { "type": "step" }, { "type": "step" }] }]
+}
+{% endschema %}

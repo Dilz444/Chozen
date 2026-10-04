@@ -1,0 +1,27 @@
+<section class="sec sec--band" aria-labelledby="ar-{{ section.id }}">
+  <div class="wrap areas">
+    <div>
+      <h2 id="ar-{{ section.id }}">{{ section.settings.heading }}</h2>
+      <p>{% render 'tbc', text: section.settings.text %}</p>
+      <a class="link-arrow" href="{{ section.settings.link | default: '/pages/delivery' }}">{{ section.settings.link_label }} <svg aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+    </div>
+    <ul class="areas__list">
+      {%- for block in section.blocks -%}
+        <li {{ block.shopify_attributes }}>{% if block.settings.page != blank %}<a href="{{ block.settings.page.url }}">{{ block.settings.name }}</a>{% else %}{{ block.settings.name }}{% endif %} <span>{{ block.settings.postcodes }}</span></li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Delivery areas",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Where do you deliver the same day?" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "We hand-deliver across Enfield and the neighbouring parts of North London. Pop your postcode in above to check, and see the full list with delivery prices on our delivery page. [to confirm]" },
+    { "type": "url", "id": "link", "label": "Link" },
+    { "type": "text", "id": "link_label", "label": "Link text", "default": "Delivery areas and prices" }
+  ],
+  "blocks": [{ "type": "area", "name": "Area", "settings": [{ "type": "text", "id": "name", "label": "Area", "default": "Enfield Town" }, { "type": "text", "id": "postcodes", "label": "Postcodes", "default": "EN1 · EN2" }, { "type": "page", "id": "page", "label": "Area page" }] }],
+  "presets": [{ "name": "Delivery areas" }]
+}
+{% endschema %}

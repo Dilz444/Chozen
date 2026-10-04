@@ -1,0 +1,51 @@
+<section class="sec" id="{{ section.settings.anchor | default: section.id }}" aria-labelledby="tl-{{ section.id }}">
+  <div class="wrap">
+    <div class="sec__head">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}<p class="eyebrow eyebrow--sage">{{ section.settings.eyebrow }}</p>{%- endif -%}
+        <h2 id="tl-{{ section.id }}">{{ section.settings.heading }}</h2>
+      </div>
+    </div>
+    <ul class="tiles">
+      {%- for block in section.blocks -%}
+        {%- assign c = block.settings.collection -%}
+        <li class="tile" {{ block.shopify_attributes }}>
+          <a href="{{ c.url | default: '#' }}">
+            {%- if block.settings.image != blank -%}
+              <span class="tile__img">{% render 'image', image: block.settings.image, sizes: '(min-width: 48em) 33vw, 100vw' %}</span>
+            {%- else -%}
+              <span class="tile__img ph{% cycle ' ph--alt', '', ' ph--alt' %}" data-label="{{ 'general.photo_to_come' | t }}"><svg viewBox="0 0 400 400" aria-hidden="true" focusable="false"><use href="#s-{{ block.settings.scene }}"/></svg></span>
+            {%- endif -%}
+            <span class="tile__t">{{ block.settings.title | default: c.title }}</span>
+            <span class="tile__d">{{ block.settings.text }}</span>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Collection tiles",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Anchor", "default": "lasting" },
+    { "type": "text", "id": "eyebrow", "label": "Small line", "default": "Sent anywhere in the UK" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Gifts that last" }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Tile",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "image_picker", "id": "image", "label": "Photo" },
+        { "type": "select", "id": "scene", "label": "Placeholder drawing", "options": [{ "value": "faux", "label": "Vase" }, { "value": "crystals", "label": "Crystals" }, { "value": "jewellery", "label": "Jewellery" }, { "value": "bouquet", "label": "Bouquet" }], "default": "faux" },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "text", "id": "text", "label": "Line" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Collection tiles", "blocks": [{ "type": "tile" }, { "type": "tile" }, { "type": "tile" }] }]
+}
+{% endschema %}

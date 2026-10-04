@@ -1,0 +1,89 @@
+{%- comment -%}
+  One section for every page layout; each page template sets its options. Page data:
+  page.content (body), custom.lede, custom.faq (json), custom.parent ("Title|/url"), custom.area_postcodes, custom.area_fee.
+{%- endcomment -%}
+{%- liquid
+  assign pm = page.metafields.custom
+  assign trail = ''
+  if pm.parent.value != blank
+    assign trail = pm.parent.value | append: ';;'
+  endif
+  assign trail = trail | append: page.title
+  assign kind = section.settings.kind
+-%}
+{% render 'breadcrumbs', trail: trail %}
+<div class="wrap pg-body">
+  <header class="pg-head">
+    <h1>{{ pm.h1.value | default: page.title }}</h1>
+    {%- if pm.lede.value != blank -%}<p class="lede">{% render 'tbc', text: pm.lede.value %}</p>{%- endif -%}
+  </header>
+
+  {%- if kind == 'area' or kind == 'delivery' -%}
+    {%- if pm.area_postcodes.value != blank or pm.area_fee.value != blank -%}
+      <dl class="area-facts">
+        {%- if pm.area_postcodes.value != blank -%}<div><dt>Postcodes</dt><dd>{% render 'tbc', text: pm.area_postcodes.value %}</dd></div>{%- endif -%}
+        <div><dt>Order by</dt><dd>{% render 'cutoff' %}</dd></div>
+        {%- if pm.area_fee.value != blank -%}<div><dt>Delivery</dt><dd>{% render 'tbc', text: pm.area_fee.value %}</dd></div>{%- endif -%}
+        <div><dt>Days</dt><dd>{% render 'tbc', text: section.settings.days_text %}</dd></div>
+      </dl>
+    {%- endif -%}
+    {% render 'postcode-check', id: section.id %}
+  {%- endif -%}
+
+  <div class="{% if kind == 'contact' or kind == 'hire' %}pg-split{% endif %}">
+    <div class="rte">{% render 'tbc', text: page.content %}</div>
+
+    {%- if kind == 'contact' or kind == 'hire' -%}
+      <div class="form-card">
+        {%- if kind == 'contact' -%}
+          <address class="nap" style="margin-bottom: 20px">
+            <strong>{{ shop.name }}</strong>
+            <span>{% render 'tbc', text: settings.street_address %}, Enfield {% render 'tbc', text: settings.postcode %}</span>
+            {%- if settings.phone != blank -%}<a href="tel:{{ settings.phone | remove: ' ' }}">{{ settings.phone }}</a>{%- endif -%}
+            {%- if settings.email != blank -%}<a href="mailto:{{ settings.email }}">{{ settings.email }}</a>{%- endif -%}
+            <span>{% render 'tbc', text: settings.hours %}</span>
+          </address>
+        {%- endif -%}
+        {%- form 'contact' -%}
+          {%- if form.posted_successfully? -%}<p class="form-ok" role="status">{{ 'contact.sent' | t }}</p>{%- endif -%}
+          {%- if form.errors -%}<div class="form-err" role="alert">{{ form.errors | default_errors }}</div>{%- endif -%}
+          <input type="hidden" name="contact[form]" value="{{ kind }}">
+          <div class="field"><label for="c-name">{{ 'contact.name' | t }}</label><input id="c-name" type="text" name="contact[name]" autocomplete="name" required></div>
+          <div class="field"><label for="c-email">{{ 'contact.email' | t }}</label><input id="c-email" type="email" name="contact[email]" autocomplete="email" required></div>
+          <div class="field"><label for="c-phone">{{ 'contact.phone' | t }}</label><input id="c-phone" type="tel" name="contact[phone]" autocomplete="tel"></div>
+          {%- if kind == 'hire' -%}
+            <div class="field"><label for="c-biz">Business or venue</label><input id="c-biz" type="text" name="contact[business]" autocomplete="organization"></div>
+            <div class="field"><label for="c-where">Where (postcode)</label><input id="c-where" type="text" name="contact[postcode]" autocomplete="postal-code"></div>
+            <div class="field"><label for="c-what">What you have in mind</label><select id="c-what" name="contact[hire_type]"><option>Monthly arrangements</option><option>A one-off event</option><option>Not sure yet</option></select></div>
+          {%- endif -%}
+          <div class="field"><label for="c-msg">{{ 'contact.message' | t }}</label><textarea id="c-msg" name="contact[body]" required></textarea></div>
+          <button class="btn btn--primary" type="submit">{{ 'contact.send' | t }}</button>
+        {%- endform -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- if section.settings.collection != blank -%}
+    <div class="sec sec--tight" style="padding-left: 0; padding-right: 0">
+      <div class="sec__head"><h2>{{ section.settings.collection_heading }}</h2><a class="link-arrow" href="{{ section.settings.collection.url }}">{{ 'general.see_all' | t }} <svg aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></div>
+      <ul class="grid">{%- for product in section.settings.collection.products limit: 4 -%}{% render 'product-card', product: product, forloop: forloop %}{%- endfor -%}</ul>
+    </div>
+  {%- endif -%}
+
+  {%- assign faqs = pm.faq.value -%}
+  {%- if faqs != blank -%}<div class="sec" style="padding-left: 0; padding-right: 0">{% render 'faq-list', faqs: faqs, id: section.id %}</div>{%- endif -%}
+</div>
+{% schema %}
+{
+  "name": "Page",
+  "settings": [
+    { "type": "select", "id": "kind", "label": "Layout", "options": [
+      { "value": "plain", "label": "Plain text" }, { "value": "about", "label": "About" }, { "value": "contact", "label": "Contact (with form)" },
+      { "value": "delivery", "label": "Delivery" }, { "value": "area", "label": "Delivery area" }, { "value": "hire", "label": "Floral hire (with enquiry form)" }, { "value": "faq", "label": "Questions" }
+    ], "default": "plain" },
+    { "type": "text", "id": "days_text", "label": "Delivery days text", "default": "Monday to Saturday [to confirm]" },
+    { "type": "collection", "id": "collection", "label": "Products to show" },
+    { "type": "text", "id": "collection_heading", "label": "Products heading", "default": "Flowers for today" }
+  ]
+}
+{% endschema %}
