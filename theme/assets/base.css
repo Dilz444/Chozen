@@ -424,3 +424,5 @@ body.no-scroll { overflow: hidden; }
 .hdr__nav a[aria-current] { color: var(--rose); border-color: var(--rose); }
 .pdp__dyn { margin-top: 10px; }
 .drawer[hidden] { display: none; }
+.deliv a { display: inline-block; padding: 6px 0; text-underline-offset: 3px; }
+.pdp__specs .rte a, .rte a { padding: 2px 0; }

@@ -2,7 +2,7 @@
 url: /blogs/guides/balloon-care
 type: article
 template: article.guide
-title: How Long Do Helium Balloons Last? Balloon Care and Safety | ChoZen Boutique
+title: How Long Do Helium Balloons Last? | ChoZen Boutique
 meta: Latex helium balloons usually float for 12 to 24 hours indoors, foil balloons for 3 to 7 days. How heat and cold affect them, and how to use them safely.
 h1: How long do helium balloons last?
 lede: >-

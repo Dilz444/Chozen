@@ -101,8 +101,8 @@ Often, yes. Re-cut the stems and stand them in deep, cool water for an hour or t
 of cool water, head and all, for half an hour. Roses with drooping heads usually recover the same way, and the
 [rose care guide](/blogs/guides/rose-care) has the details, and tulips have [their own quirks](/blogs/guides/tulip-care).
 
-If a flower has gone papery, brown at the edges or mushy at the stem, it's done. Take it out so it doesn't hurry
-the others.
+If a flower has gone papery, brown at the edges or mushy at the stem, it's done. Take it out so it doesn't shorten
+the life of the others.
 
 ## Which flowers are a problem with pets?
 

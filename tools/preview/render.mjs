@@ -143,7 +143,7 @@ export function createRenderer(opts = {}) {
       return { id: bid, type: b.type, settings: withDefaults(def.settings, b.settings || {}), shopify_attributes: '' };
     });
     const section = { id: `${scope.template?.name || 'x'}__${id}`, settings: withDefaults(schema.settings, cfg.settings || {}), blocks };
-    const html = await engine.parseAndRender(src, { ...scope, section });
+    const html = await engine.parseAndRender(src, { ...scope, section }, { globals: scope });
     return `<div id="shopify-section-${section.id}" class="shopify-section">${html}</div>`;
   }
 
@@ -154,7 +154,7 @@ export function createRenderer(opts = {}) {
     const seg = p.split('/').filter(Boolean);
     const S = store;
     if (p === '/') return { tpl: 'index', page_type: 'index', title: S.home.title, desc: S.home.meta };
-    if (seg[0] === 'collections' && seg.length === 1) return { tpl: 'list-collections', page_type: 'list-collections', title: 'Shop', desc: null };
+    if (seg[0] === 'collections' && seg.length === 1) return { tpl: 'list-collections', page_type: 'list-collections', title: 'Shop all collections', desc: 'Same-day flowers and balloon gift sets in North London, and faux flowers, crystals and gemstone jewellery sent anywhere in the UK.' };
     if (seg[0] === 'collections' && S.collections[seg[1]] && seg.length === 2) { const c = S.collections[seg[1]]; return { tpl: 'collection', suffix: c.template_suffix, page_type: 'collection', vars: { collection: c }, title: c.seo_title || c.title, desc: c.seo_description }; }
     if (seg[0] === 'products') { const pr = S.products.find((x) => x.handle === seg[1]); if (pr) return { tpl: 'product', suffix: pr.template_suffix, page_type: 'product', vars: { product: pr, collection: pr.collections[0] }, title: pr.title, desc: pr.metafields.custom.summary.value }; }
     if (seg[0] === 'pages' && S.pages[seg[1]]) { const pg = S.pages[seg[1]]; return { tpl: 'page', suffix: pg.template_suffix, page_type: 'page', vars: { page: pg }, title: pg.seo_title || pg.title, desc: pg.seo_description }; }
@@ -185,7 +185,7 @@ export function createRenderer(opts = {}) {
     let body = '';
     for (const id of tpl.order) body += await renderSection(tpl.sections[id].type, id, tpl.sections[id], scope);
     const layout = tpl.layout || 'theme';
-    const html = await engine.parseAndRender(read(`layout/${layout}.liquid`), { ...scope, content_for_layout: body });
+    const html = await engine.parseAndRender(read(`layout/${layout}.liquid`), { ...scope, content_for_layout: body }, { globals: scope });
     return { status: r.status || 200, html, route: r };
   }
 

@@ -19,7 +19,7 @@ A small file a website saves in your browser so it can remember things between p
 
 ## Which cookies are always on?
 
-The ones the shop can't work without. They keep your basket, carry you through checkout, keep you signed in, protect against fraud and remember your cookie choice. The law doesn't require consent for these, and turning them off in your browser will stop the basket working.
+The ones the shop can't work without. They keep your basket, carry you through checkout, keep you signed in, help stop fraud and remember your cookie choice. The law doesn't require consent for these, and turning them off in your browser will stop the basket working.
 
 ## Do you track my visit?
 

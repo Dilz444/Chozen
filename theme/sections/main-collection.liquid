@@ -51,6 +51,7 @@
           </select>
         </form>
       </div>
+      <h2 class="vh">Products</h2>
       <ul class="grid">
         {%- for product in collection.products -%}
           {% render 'product-card', product: product, forloop: forloop %}

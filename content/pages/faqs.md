@@ -60,7 +60,7 @@ faq:
     a: >-
       They're the traditions and stories attached to each stone, shared as gift meanings. Crystals are sold as
       decorative and spiritual items. Their traditional meanings are not scientifically proven and are not a
-      substitute for medical advice.
+      substitute for medical advice or treatment.
   - q: Will my crystal look like the one in the photo?
     a: >-
       Natural stones vary in colour, shape and markings, so yours will be similar but its own. Sizes on each
@@ -74,7 +74,7 @@ faq:
     a: >-
       Message or call within [to confirm] with a photo, and we'll put it right. Your legal rights stay the same
       either way.
-links: [/pages/delivery, /policies/refund-policy, /policies/shipping-policy, /policies/terms-of-service, /blogs/guides/greeting-card-messages, /collections/balloon-gift-sets, /collections/faux-flowers, /collections/crystals, /pages/contact]
+links: [/pages/delivery, /policies/refund-policy, /policies/shipping-policy, /policies/terms-of-service, /blogs/guides/what-to-write-in-a-card, /collections/balloon-gift-sets, /collections/faux-flowers, /collections/crystals, /pages/contact]
 ---
 
 <!-- The page.faq template renders the faq list above, grouped under these H2s. Policy links sit in the answers
@@ -89,7 +89,7 @@ See the [delivery page](/pages/delivery) for areas, fees, days and substitutions
 
 ## What goes on the card?
 
-Ideas for wording are in our [card messages guide](/blogs/guides/greeting-card-messages).
+Ideas for wording are in our [card messages guide](/blogs/guides/what-to-write-in-a-card).
 
 ## Balloons
 

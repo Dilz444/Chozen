@@ -3,7 +3,7 @@ url: /blogs/guides/how-to-clean-faux-flowers
 type: article
 template: article.guide
 title: How to Clean Faux Flowers Without Damaging Them | ChoZen Boutique
-meta: Dust faux flowers weekly with a soft brush, blow them over with a hairdryer on cool, and keep water off fabric petals. What works, what to avoid and how to store them.
+meta: Dust faux flowers weekly with a soft brush, use a hairdryer on cool, and keep water off fabric petals. What works, what to avoid and how to store them.
 h1: How to clean faux flowers
 lede: >-
   Dust faux flowers every week or two with a soft make-up brush or a feather duster, or blow the dust off with a

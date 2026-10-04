@@ -22,5 +22,5 @@ faq:
     a: Yes. Add the company name and who should sign for it, and we'll take it to reception.
   - q: Can I keep the gift anonymous?
     a: Yes. Leave your name off the card message and we won't add it.
-links: [/collections/same-day-flowers, /collections/gifts-under-30, /collections/crystals, /blogs/guides/greeting-card-messages]
+links: [/collections/same-day-flowers, /collections/gifts-under-30, /collections/crystals, /blogs/guides/what-to-write-in-a-card]
 ---

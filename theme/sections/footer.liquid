@@ -1,7 +1,7 @@
 <footer class="ftr">
   <div class="wrap ftr__in">
     <div class="ftr__brand">
-      <a class="logo logo--ftr" href="{{ routes.root_url }}" aria-label="{{ shop.name }}, {{ 'general.home' | t | downcase }}"><svg class="logo__mark" aria-hidden="true" focusable="false"><use href="#i-jasmine"/></svg><span class="logo__word">ChoZen</span><span class="logo__sub">Boutique</span></a>
+      <a class="logo logo--ftr" href="{{ routes.root_url }}" aria-label="{{ shop.name }}, {{ 'general.home' | t | downcase }}"><svg class="logo__mark" aria-hidden="true" focusable="false"><use href="#i-jasmine"/></svg><span class="logo__word">ChoZen</span> <span class="logo__sub">Boutique</span></a>
       <p>{{ section.settings.blurb }}</p>
       <address class="nap">
         {%- if settings.phone != blank -%}<a href="tel:{{ settings.phone | remove: ' ' }}">{{ settings.phone }}</a>{%- endif -%}

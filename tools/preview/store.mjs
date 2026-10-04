@@ -58,12 +58,12 @@ function md2page(file) {
 
 // Sample products: one set per line, clearly tagged. Prices are null (shown as "£—").
 const SAMPLE_LINES = {
-  fresh: ['Sample: seasonal hand-tied bouquet', 'Sample: roses in a vase', "Sample: florist's choice", 'Sample: pastel posy'],
-  balloon: ['Sample: flowers & balloon set', 'Sample: birthday balloon set', 'Sample: new baby balloon set'],
-  faux: ['Sample: faux peonies in a vase', 'Sample: faux rose arrangement', 'Sample: faux stems bundle'],
-  crystal: ['Sample: crystal cluster', 'Sample: tumbled stone gift set', 'Sample: crystal point'],
-  jewellery: ['Sample: gemstone bracelet', 'Sample: birthstone pendant'],
-  other: ['Sample: greeting card', 'Sample: gift box'],
+  fresh: ['Sample seasonal hand-tied bouquet', 'Sample roses in a vase', "Sample florist's choice", 'Sample pastel posy'],
+  balloon: ['Sample flowers & balloon set', 'Sample birthday balloon set', 'Sample new baby balloon set'],
+  faux: ['Sample faux peonies in a vase', 'Sample faux rose arrangement', 'Sample faux stems bundle'],
+  crystal: ['Sample crystal cluster', 'Sample tumbled stone gift set', 'Sample crystal point'],
+  jewellery: ['Sample gemstone bracelet', 'Sample birthstone pendant'],
+  other: ['Sample greeting card', 'Sample gift box'],
 };
 const COLL_LINES = {
   'same-day-flowers': ['fresh', 'balloon'], 'balloon-gift-sets': ['balloon'], 'gifts-that-last': ['faux', 'crystal', 'jewellery'],
@@ -79,7 +79,7 @@ function makeProducts() {
   for (const [line, names] of Object.entries(SAMPLE_LINES)) {
     for (const name of names) {
       id += 1;
-      const handle = name.toLowerCase().replace(/^sample: /, 'sample-').replace(/[^a-z0-9]+/g, '-').replace(/-$/, '');
+      const handle = name.toLowerCase().replace(/^sample /, 'sample-').replace(/[^a-z0-9]+/g, '-').replace(/-$/, '');
       const local = line === 'fresh' || line === 'balloon';
       const variant = { id: id * 10, title: 'Default Title', price: 0, available: true, options: ['Default Title'], sku: null, url: `/products/${handle}?variant=${id * 10}` };
       out.push({
@@ -122,8 +122,9 @@ export function buildStore() {
   for (const p of products) p.collections = Object.values(collections).filter((c) => c.handle !== 'all' && c.products.includes(p)).slice(0, 1);
 
   const pages = {};
-  for (const f of dir('pages')) { const p = md2page(f); pages[p.handle] = p; }
+  for (const f of dir('pages')) { if (!readMd(f).fm.url) continue; const p = md2page(f); pages[p.handle] = p; }
   for (const f of dir('legal')) {
+    if (!readMd(f).fm.url) continue; // internal notes (checklist, footer text) aren't pages
     const p = md2page(f);
     if (p.url.startsWith('/pages/')) pages[p.handle] = p;
   }

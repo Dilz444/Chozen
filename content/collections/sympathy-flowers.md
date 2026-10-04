@@ -27,5 +27,5 @@ faq:
     a: >-
       Yes. Flowers that come after the funeral, once the visitors have gone, can mean a great deal.
       Choose any date at checkout.
-links: [/blogs/guides/greeting-card-messages, /pages/flower-delivery-enfield, /pages/delivery, /collections/faux-flowers]
+links: [/blogs/guides/what-to-write-in-a-card, /pages/flower-delivery-enfield, /pages/delivery, /collections/faux-flowers]
 ---

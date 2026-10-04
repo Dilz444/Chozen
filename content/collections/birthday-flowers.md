@@ -23,5 +23,5 @@ faq:
       in the UK. Order a few days ahead.
   - q: Can I book a birthday delivery weeks in advance?
     a: Yes. Pick the date at checkout, up to [weeks ahead] [to confirm] ahead.
-links: [/collections/balloon-gift-sets, /collections/same-day-flowers, /collections/gifts-that-last, /blogs/guides/greeting-card-messages, /pages/delivery]
+links: [/collections/balloon-gift-sets, /collections/same-day-flowers, /collections/gifts-that-last, /blogs/guides/what-to-write-in-a-card, /pages/delivery]
 ---
