@@ -1,0 +1,29 @@
+/* ChoZen Boutique design tokens.
+   PROVISIONAL until the Wix capture runs (design-tokens.md). This is the only file with raw colour values.
+   theme/assets/tokens.css is generated from the same values. */
+:root {
+  --paper: #FBF8F4;
+  --paper-2: #F4ECE4;
+  --blush: #EED9D6;
+  --ink: #2A2225;
+  --ink-2: #62565A;
+  --rose: #94495D;
+  --rose-deep: #7A3A4C;
+  --sage: #5D6B53;
+  --sage-soft: #DCE3D3;
+  --gold: #B39368;
+  --line: #E6DCD3;
+  --white: #FFFFFF;
+
+  --font-display: "Cormorant Garamond", "Cormorant", Georgia, "Times New Roman", serif;
+  --font-body: "Jost", "Futura", "Avenir Next", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --gutter: 16px;
+  --container: 1240px;
+  --section: 56px;
+  --radius: 2px;
+  --header-h: 60px;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+@media (min-width: 48em) { :root { --gutter: 24px; --section: 72px; } }
+@media (min-width: 64em) { :root { --gutter: 40px; --section: 96px; --header-h: 76px; } }

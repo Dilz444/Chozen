@@ -1,0 +1,53 @@
+[
+  {
+    "engine": "chromium",
+    "device": "iphone-se",
+    "sw": 320,
+    "vw": 320,
+    "h": 7947,
+    "small": [],
+    "inputs": [
+      "16px",
+      "16px"
+    ],
+    "hscroll": false
+  },
+  {
+    "engine": "chromium",
+    "device": "iphone-14",
+    "sw": 390,
+    "vw": 390,
+    "h": 7926,
+    "small": [
+      "A. 154x23 \"Sample: roses in a vase\"",
+      "A. 149x23 \"Sample: florist's choice\""
+    ],
+    "inputs": [
+      "16px",
+      "16px"
+    ],
+    "hscroll": false
+  },
+  {
+    "engine": "chromium",
+    "device": "iphone-14-pro-max",
+    "sw": 430,
+    "vw": 430,
+    "h": 8021,
+    "small": [
+      "A. 154x23 \"Sample: roses in a vase\"",
+      "A. 149x23 \"Sample: florist's choice\""
+    ],
+    "inputs": [
+      "16px",
+      "16px"
+    ],
+    "hscroll": false
+  },
+  {
+    "engine": "chromium",
+    "device": "desktop-1440",
+    "sw": 1440,
+    "hscroll": false
+  }
+]
