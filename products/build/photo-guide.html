@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Photo Guide</title>
+<style>
+@font-face { font-family: "Cormorant Garamond"; font-weight: 500; font-style: normal; src: url(../../mockup/fonts/cormorant-garamond-latin-500-normal.woff2) format("woff2"); }
+@font-face { font-family: "Cormorant Garamond"; font-weight: 600; font-style: normal; src: url(../../mockup/fonts/cormorant-garamond-latin-600-normal.woff2) format("woff2"); }
+@font-face { font-family: "Cormorant Garamond"; font-weight: 500; font-style: italic; src: url(../../mockup/fonts/cormorant-garamond-latin-500-italic.woff2) format("woff2"); }
+@font-face { font-family: "Jost"; font-weight: 400; src: url(../../mockup/fonts/jost-latin-400-normal.woff2) format("woff2"); }
+@font-face { font-family: "Jost"; font-weight: 500; src: url(../../mockup/fonts/jost-latin-500-normal.woff2) format("woff2"); }
+:root {
+  --paper: #FBF8F4; --paper-2: #F4ECE4; --blush: #EED9D6; --ink: #2A2225; --ink-2: #62565A;
+  --rose: #94495D; --line: #E6DCD3; --sage: #5D6B53; --gold: #B39368;
+}
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--paper); }
+body {
+  width: 210mm; height: 297mm; overflow: hidden;
+  padding: 12mm 13mm 10mm;
+  font-family: "Jost", sans-serif; font-size: 9.4pt; line-height: 1.42; color: var(--ink);
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--gold); padding-bottom: 3.2mm; margin-bottom: 4.5mm; }
+.eyebrow { font-size: 7pt; letter-spacing: .14em; text-transform: uppercase; color: var(--rose); font-weight: 500; margin-bottom: 1mm; }
+h1 { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: 28pt; line-height: 1; white-space: nowrap; }
+h1 em { font-style: italic; color: var(--rose); }
+.lede { max-width: 62mm; text-align: right; font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 12.5pt; line-height: 1.2; color: var(--ink-2); }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.6mm 5mm; }
+section { background: #fff; border: 1px solid var(--line); padding: 3.2mm 3.8mm 3.4mm; }
+section.tint { background: var(--paper-2); border-color: var(--paper-2); }
+h2 { font-family: "Cormorant Garamond", serif; font-weight: 600; font-size: 14.5pt; line-height: 1.1; margin-bottom: 1.6mm; display: flex; align-items: baseline; gap: 2mm; }
+h2 .n { font-family: "Jost", sans-serif; font-weight: 500; font-size: 7pt; letter-spacing: .1em; color: var(--rose); }
+ol { list-style: none; counter-reset: s; }
+ol li { counter-increment: s; position: relative; padding-left: 5.6mm; margin-bottom: 1.1mm; }
+ol li:last-child { margin-bottom: 0; }
+ol li::before { content: counter(s); position: absolute; left: 0; top: .35mm; width: 3.9mm; height: 3.9mm; border-radius: 50%; background: var(--rose); color: #fff; font-size: 6.4pt; font-weight: 500; line-height: 3.9mm; text-align: center; }
+b { font-weight: 500; }
+code { white-space: nowrap; font-family: "Jost", sans-serif; font-weight: 500; color: var(--rose); }
+.shots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2mm; margin-top: .4mm; }
+.shot { text-align: center; font-size: 8pt; line-height: 1.25; color: var(--ink-2); }
+.shot svg { display: block; margin: 0 auto 1.2mm; width: 15mm; height: 15mm; }
+.shot b { display: block; color: var(--ink); font-size: 8.2pt; }
+.span2 { grid-column: 1 / -1; }
+ul.dont { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: .8mm 4mm; }
+ul.dont li { padding-left: 4.6mm; position: relative; }
+ul.dont li::before { content: "×"; position: absolute; left: 0; top: -.4mm; color: var(--rose); font-weight: 500; font-size: 10pt; }
+footer { margin-top: 3.6mm; padding-top: 2.6mm; border-top: 1px solid var(--gold); display: flex; justify-content: space-between; font-size: 8pt; color: var(--ink-2); }
+footer b { color: var(--ink); }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <div class="eyebrow">ChoZen Boutique · photo guide</div>
+    <h1>Product photos <em>on your phone</em></h1>
+  </div>
+  <p class="lede">Same spot, same light, same way, every time. That's what makes a shop look like one shop.</p>
+</header>
+
+<div class="grid">
+  <section>
+    <h2><span class="n">01</span>Light</h2>
+    <ol>
+      <li>Shoot by a big window in daylight. Around <b>midday or a cloudy day</b> is best.</li>
+      <li><b>No direct sun</b> on the product. If it's coming in, hang a white sheet or net curtain over the window.</li>
+      <li><b>Flash off.</b> Room lights off too, they turn photos yellow.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2><span class="n">02</span>Backdrop</h2>
+    <ol>
+      <li>One plain <b>warm-white or ivory</b> board or sheet, behind and under the product. The same one every time.</li>
+      <li>Prop a <b>second white board</b> opposite the window. It bounces light back into the shadows.</li>
+    </ol>
+  </section>
+
+  <section class="span2">
+    <h2><span class="n">03</span>Set up once, then repeat</h2>
+    <ol style="columns: 2; column-gap: 6mm;">
+      <li>Pick <b>one spot</b> and mark it with tape: where the product sits and where the phone goes.</li>
+      <li><b>Same distance, same height.</b> Phone on a stack of books or a cheap tripod.</li>
+      <li><b>Gridlines on</b>, <b>1x lens</b> (not 0.5x), no filters.</li>
+      <li><b>Tap the product</b> to focus, then slide the little sun down a touch so whites don't glare.</li>
+      <li>Product <b>in the middle</b>, filling about <b>70%</b> of the frame.</li>
+    </ol>
+  </section>
+
+  <section class="span2 tint">
+    <h2><span class="n">04</span>Four shots per product</h2>
+    <div class="shots">
+      <div class="shot">
+        <svg viewBox="0 0 60 60" fill="none" stroke="#94495D" stroke-width="1.6"><rect x="6" y="6" width="48" height="48" stroke="#B39368"/><path d="M30 46V28M30 34l-6-6M30 32l6-7"/><circle cx="30" cy="22" r="5"/><circle cx="23" cy="26" r="3.5"/><circle cx="37" cy="24" r="3.5"/><path d="M24 46h12" stroke-width="2"/></svg>
+        <b>1. Main photo</b>Square, straight on, phone at the product's middle height. Every product has one.
+      </div>
+      <div class="shot">
+        <svg viewBox="0 0 60 60" fill="none" stroke="#94495D" stroke-width="1.6"><ellipse cx="30" cy="38" rx="17" ry="7"/><circle cx="30" cy="34" r="6"/><circle cx="21" cy="36" r="4"/><circle cx="39" cy="36" r="4"/><path d="M50 8l-9 9" stroke="#B39368"/><path d="M41 12v5h5" stroke="#B39368"/></svg>
+        <b>2. From above</b>About 45°, looking down on it.
+      </div>
+      <div class="shot">
+        <svg viewBox="0 0 60 60" fill="none" stroke="#94495D" stroke-width="1.6"><circle cx="26" cy="26" r="13"/><path d="M35.5 35.5L50 50" stroke="#B39368" stroke-width="2.2"/><circle cx="26" cy="26" r="5"/><path d="M26 21c2-4 6-4 6 0M21 26c-4-2-4-6 0-6"/></svg>
+        <b>3. A detail</b>Close in on the stems, the stone, the clasp.
+      </div>
+      <div class="shot">
+        <svg viewBox="0 0 60 60" fill="none" stroke="#94495D" stroke-width="1.6"><path d="M14 50V34c0-3 4-3 4 0v-8c0-3 4-3 4 0v-2c0-3 4-3 4 0v2c0-3 4-3 4 0v14l4-5c2-2 5 0 4 2l-7 13H14z" stroke="#B39368"/><path d="M30 26l6-14 6 14z"/></svg>
+        <b>4. Size</b>In your hand or on a table, so people see how big it is.
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">05</span>Name the files</h2>
+    <ol>
+      <li>Product name, lowercase, hyphens: <code>blush-rose-bouquet-1.jpg</code></li>
+      <li><code>-1</code> is always the square main photo, then <code>-2</code>, <code>-3</code>, <code>-4</code>.</li>
+      <li>Write the same names in the spreadsheet's <b>Photo filenames</b> column.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2><span class="n">06</span>Crystals and jewellery</h2>
+    <ol>
+      <li>A <b>dark slate</b>, or the same ivory board.</li>
+      <li>Show the size with a <b>coin or your hand</b>.</li>
+      <li>Wipe off dust and fingerprints first.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2><span class="n">07</span>Balloons</h2>
+    <ol>
+      <li>Outdoors <b>in the shade</b>, or against a plain wall.</li>
+      <li>Get the whole bundle in, weight and all.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2><span class="n">08</span>Delivery photos</h2>
+    <ol>
+      <li><b>Always ask</b> before photographing the person receiving the flowers.</li>
+      <li>If in doubt, just the bouquet on the doorstep: <b>no faces, no house numbers</b>.</li>
+    </ol>
+  </section>
+
+  <section class="span2">
+    <h2>Please don't</h2>
+    <ul class="dont">
+      <li>Use filters or beauty modes</li>
+      <li>Put text, logos or stickers on photos</li>
+      <li>Shoot on busy backgrounds (worktops, patterned bedding)</li>
+      <li>Use stock photos or pictures from the internet</li>
+    </ul>
+  </section>
+</div>
+
+<footer>
+  <span><b>Sending them:</b> full size, straight from the phone, by email or a shared folder. WhatsApp shrinks photos.</span>
+  <span>One square main photo per product</span>
+</footer>
+</body>
+</html>

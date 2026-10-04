@@ -1,0 +1,10 @@
+import { chromium } from '@playwright/test';
+const b = await chromium.launch();
+const p = await b.newPage();
+await p.goto(new URL('./photo-guide.html', import.meta.url).href);
+await p.evaluate(() => document.fonts.ready);
+const fams = await p.evaluate(() => [...document.fonts].filter(f=>f.status==='loaded').map(f=>f.family+' '+f.weight+' '+f.style));
+const over = await p.evaluate(() => [document.body.scrollHeight, document.body.clientHeight, document.querySelector('footer').getBoundingClientRect().bottom]);
+console.log(fams, over);
+await p.pdf({ path: new URL('../photo-guide.pdf', import.meta.url).pathname, format: 'A4', printBackground: true, margin: {top:0,right:0,bottom:0,left:0}, preferCSSPageSize: true });
+await b.close();
